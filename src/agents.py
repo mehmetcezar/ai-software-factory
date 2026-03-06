@@ -1,0 +1,33 @@
+from crewai import Agent
+
+class FactoryAgents:
+    """
+    Defines the roles and goals for the specialized agents in our Software Factory.
+    """
+
+    def orchestrator_agent(self):
+        return Agent(
+            role='Software Factory Manager (Orchestrator)',
+            goal='Analyze requirements, break them down into tasks, and delegate them to appropriate agents.',
+            backstory='You are a highly experienced software engineering manager. Your job is to make sure every project is perfectly planned and correctly executed by your team of developers and QA engineers.',
+            verbose=True,
+            allow_delegation=True
+        )
+
+    def developer_agent(self):
+        return Agent(
+            role='Senior Developer',
+            goal='Write clean, efficient, and well-documented Python code based on the given tasks.',
+            backstory='You are a brilliant Senior Software Engineer. You excel at functional programming, object-oriented design, and writing production-ready code with no bugs.',
+            verbose=True,
+            allow_delegation=False
+        )
+
+    def qa_agent(self):
+        return Agent(
+            role='Quality Assurance Specialist',
+            goal='Review code, write unit tests, and ensure all requirements are met before deployment.',
+            backstory='You are a strict and detail-oriented QA engineer. You catch every bug before it goes to production. You write thorough tests and demand high code quality.',
+            verbose=True,
+            allow_delegation=False
+        )
