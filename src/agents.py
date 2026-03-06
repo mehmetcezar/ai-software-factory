@@ -1,4 +1,11 @@
-from crewai import Agent
+from crewai import Agent, LLM
+
+# Configure the local Ollama LLM
+# Note: You can change "llama3.1" to "phi3" or any other model you have downloaded in Ollama.
+local_llm = LLM(
+    model="ollama/llama3.1",
+    base_url="http://localhost:11434"
+)
 
 class FactoryAgents:
     """
@@ -10,6 +17,7 @@ class FactoryAgents:
             role='Software Factory Manager (Orchestrator)',
             goal='Analyze requirements, break them down into tasks, and delegate them to appropriate agents.',
             backstory='You are a highly experienced software engineering manager. Your job is to make sure every project is perfectly planned and correctly executed by your team of developers and QA engineers.',
+            llm=local_llm,
             verbose=True,
             allow_delegation=True
         )
@@ -19,6 +27,7 @@ class FactoryAgents:
             role='Senior Developer',
             goal='Write clean, efficient, and well-documented Python code based on the given tasks.',
             backstory='You are a brilliant Senior Software Engineer. You excel at functional programming, object-oriented design, and writing production-ready code with no bugs.',
+            llm=local_llm,
             verbose=True,
             allow_delegation=False
         )
@@ -28,6 +37,7 @@ class FactoryAgents:
             role='Quality Assurance Specialist',
             goal='Review code, write unit tests, and ensure all requirements are met before deployment.',
             backstory='You are a strict and detail-oriented QA engineer. You catch every bug before it goes to production. You write thorough tests and demand high code quality.',
+            llm=local_llm,
             verbose=True,
             allow_delegation=False
         )

@@ -50,14 +50,13 @@ def main():
     print("Welcome to the AI Software Factory!")
     print("Initializing...")
     
-    # Check for API Key
+    # API Key check removed: We are now using local Ollama.
+    # Note: CrewAI/LiteLLM might still expect some dummy API key in the environment,
+    # but we don't need a real OpenAI key.
     if not os.getenv("OPENAI_API_KEY"):
-        print("\n[WARNING] OPENAI_API_KEY is not set in the .env file.")
-        print("Required to run the Language Models.")
-        print("Please add 'OPENAI_API_KEY=your_key_here' to your .env file.")
-        return
-
-    print("API Key found. Factory ready to accept tasks.")
+        os.environ["OPENAI_API_KEY"] = "NA" # Dummy key for LiteLLM just in case
+        
+    print("Local LLM Factory ready to accept tasks.")
     
     # Demonstration request
     sample_request = "Create a Python function that calculates the Fibonacci sequence up to a given number, including type hints and unit tests."
