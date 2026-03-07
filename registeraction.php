@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include 'config.php';
 session_start();
 
@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password_raw = $_POST['password'];
 
     $conn = mysqli_connect($config['DB_HOST'], $config['DB_USERNAME'], $config['DB_PASSWORD'], $config['DB_DATABASE']);
-
+    
     if (!$conn) {
         die("Bağlantı hatası: " . mysqli_connect_error());
     }
@@ -37,11 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt = $conn->prepare("INSERT INTO users (company_id, name, surname, uname, password, email, isadmin) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("isssssi", $company_id, $first_name, $last_name, $username, $password_hashed, $email, $is_admin);
-
+    
     if ($stmt->execute()) {
         header("Location: admin.php?reg=success");
-    }
-    else {
+    } else {
         echo "Hata: " . $stmt->error;
     }
 
