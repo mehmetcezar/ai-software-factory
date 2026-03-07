@@ -85,6 +85,7 @@ function goBack() {
 
     
 include_once 'usersession.php';
+    $_SESSION['company_id'] = getCompanyId($username);
             //echo "OKpre";
     //usersessiontimecheck();
             
@@ -116,7 +117,6 @@ include 'userdbcon.php';
 if(userlogincheck($username)&&usersessioncheck($username,$session_id)&&checkadmin($username)){
    
     $_SESSION['kultipi']="admin";
-                    $_SESSION['company_id'] = getCompanyId($username);
     $_SESSION['uname']=$username;
         echo '<html><body class="makememiddlebody"><div class="containercap"><div class="textcapdiv"><z class="textcap">Daha Ã¶nceden giriÅŸ yapÄ±lmÄ±ÅŸtÄ±r. Devam etmek iÃ§in aÅŸaÄŸÄ±daki butona basÄ±nÄ±z.</z></div><div class="gobackcapdiv"><button class="gobackcap" type="submit" name="submit" onclick="opensessionadmin()">Admin SayfasÄ±</button></div></div></body></html>';
          
@@ -182,7 +182,6 @@ if(userlogincheck($username)&&usersessioncheck($username,$session_id)&&checkadmi
              if($isadmin)
              {
                     $_SESSION['kultipi']="admin";
-                    $_SESSION['company_id'] = getCompanyId($username);
                   
                if($qr_status==1) 
                {
@@ -232,7 +231,6 @@ if(userlogincheck($username)&&usersessioncheck($username,$session_id)&&checkadmi
         }
                    
                 yetkilidevam();  
-        $_SESSION['company_id'] = getCompanyId($username);
                } 
              }
             
@@ -261,7 +259,6 @@ if(userlogincheck($username)&&usersessioncheck($username,$session_id)&&checkadmi
                    
                    
                 muhasebedevam();
-        $_SESSION['company_id'] = getCompanyId($username);
                }
                  
                  
@@ -293,7 +290,6 @@ if(userlogincheck($username)&&usersessioncheck($username,$session_id)&&checkadmi
                    
                    
                 kiralamasorumlusudevam(); 
-        $_SESSION['company_id'] = getCompanyId($username);
                } 
              }
              $musteri=checkmusteri($username);
@@ -321,7 +317,6 @@ if(userlogincheck($username)&&usersessioncheck($username,$session_id)&&checkadmi
                    
                    
                 musteridevam();  
-        $_SESSION['company_id'] = getCompanyId($username);
                } 
                  
              }
@@ -364,7 +359,6 @@ exit();
 	
 }
 function yetkilidevam()
-        $_SESSION['company_id'] = getCompanyId($username);
 {
 
 header("Location: https://whitelotustest.online/yetkilipage.php"); /* Redirect browser */
@@ -373,7 +367,6 @@ exit();
 }
               
 function muhasebedevam()
-        $_SESSION['company_id'] = getCompanyId($username);
 {
 
 header("Location: https://whitelotustest.online/muhasebepage.php"); 
@@ -382,7 +375,6 @@ exit();
 	
 
 function kiralamasorumlusudevam()
-        $_SESSION['company_id'] = getCompanyId($username);
 {
 
 header("Location: https://whitelotustest.online/kiralamasorumlusupage.php");
@@ -390,7 +382,6 @@ exit();
 	
 }
 function musteridevam()
-        $_SESSION['company_id'] = getCompanyId($username);
 {
 
 header("Location: https://whitelotustest.online/musteripage.php"); 
