@@ -9,24 +9,23 @@ class FactoryTasks:
     def analyze_requirement_task(self, agent, requirement: str):
         return Task(
             description=dedent(f"""\
-                Analyze the following user requirement or GitHub issue:
-                "{requirement}"
-                
-                Break it down into technical implementation steps. Identify what files need 
-                to be created or modified, and clearly list the acceptance criteria.
+                Analyze the following user requirement: "{requirement}"
+                Break it down into technical implementation steps. 
+                Identify exactly which Python files need to be created.
+                Do not attempt to call any tools for this step; just provide the analysis as text.
             """),
-            expected_output="A detailed list of technical implementation steps and acceptance criteria.",
+            expected_output="A list of technical implementation steps and file names.",
             agent=agent
         )
 
     def write_code_task(self, agent, context=None):
         return Task(
             description=dedent("""\
-                Based on the technical implementation plan, write the required code.
-                Ensure that you follow clean code principles and document your functions.
-                If modifying an existing file, provide the exact changes needed.
+                Based on the analysis, write the Python code.
+                You MUST use the 'Write File Content' tool to save your code to the specified file path.
+                Do not just output the code; save it to disk.
             """),
-            expected_output="Valid Python code that implements the requested feature.",
+            expected_output="Confirmation that the code was written to a specific file.",
             agent=agent,
             context=context
         )
@@ -34,11 +33,24 @@ class FactoryTasks:
     def test_code_task(self, agent, context=None):
         return Task(
             description=dedent("""\
-                Review the implemented code. Ensure it meets the original requirements and acceptance criteria.
-                Write unit tests if necessary, or at minimum provide a list of manual test edge cases.
-                Point out any potential bugs or security flaws.
+                Review the implemented code. 
+                Write unit tests and use the 'Write File Content' tool to save them to a test file (e.g., tests/test_*.py).
+                Ensure the tests cover the requirements.
             """),
-            expected_output="A QA report confirming the code works, including tests or identified bugs and suggested fixes.",
+            expected_output="A QA report and confirmation that test files were saved.",
+            agent=agent,
+            context=context
+        )
+
+    def push_to_github_task(self, agent, context=None):
+        return Task(
+            description=dedent("""\
+                Using the 'Git Operations' tool, add all newly created or modified files to the repository.
+                Commit the changes with a concise and descriptive commit message.
+                Finally, push the changes to the remote 'main' branch.
+                If any authentication error occurs, report it.
+            """),
+            expected_output="Confirmation that changes were committed and pushed to GitHub.",
             agent=agent,
             context=context
         )

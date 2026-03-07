@@ -1,0 +1,1 @@
+import unittest\nclass TestFibonacciFunction(unittest.TestCase):\n    def test_fibonacci_zero(self):\n        self.assertEqual(fibonacci(0), 0)\n\n    def test_fibonacci_one(self):\n        self.assertEqual(fibonacci(1), 1)\n\n    def test_fibonacci_five(self):\n        self.assertEqual(fibonacci(5), 5)\n\nif __name__ == '__main__':\n    unittest.main()

@@ -1,6 +1,13 @@
+import sys
 import os
+import io
 from dotenv import load_dotenv
 from crewai import Crew, Process
+
+# Force UTF-8 encoding for Windows terminal to handle emojis
+if sys.platform == "win32":
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 from agents import FactoryAgents
 from tasks import FactoryTasks
@@ -17,6 +24,7 @@ def run_software_factory(requirement: str):
     orchestrator = agents.orchestrator_agent()
     developer = agents.developer_agent()
     qa = agents.qa_agent()
+    devops = agents.devops_agent()
 
     # Instantiate Tasks
     tasks = FactoryTasks()
@@ -30,10 +38,13 @@ def run_software_factory(requirement: str):
     # 3. QA reviews the written code
     review_task = tasks.test_code_task(qa, context=[coding_task])
 
+    # 4. DevOps pushes to GitHub
+    push_task = tasks.push_to_github_task(devops, context=[review_task])
+
     # Build the Crew
     factory_crew = Crew(
-        agents=[orchestrator, developer, qa],
-        tasks=[analysis_task, coding_task, review_task],
+        agents=[orchestrator, developer, qa, devops],
+        tasks=[analysis_task, coding_task, review_task, push_task],
         process=Process.sequential,  # Tasks run in sequence
         verbose=True
     )

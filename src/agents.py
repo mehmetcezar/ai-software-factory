@@ -1,5 +1,5 @@
 from crewai import Agent, LLM
-from tools import read_file, write_file
+from tools import read_file, write_file, git_operation
 
 # Configure the local Ollama LLM
 # Note: You can change "llama3.1" to "phi3" or any other model you have downloaded in Ollama.
@@ -16,31 +16,46 @@ class FactoryAgents:
     def orchestrator_agent(self):
         return Agent(
             role='Software Factory Manager (Orchestrator)',
-            goal='Analyze requirements, break them down into tasks, and delegate them to appropriate agents.',
-            backstory='You are a highly experienced software engineering manager. Your job is to make sure every project is perfectly planned and correctly executed by your team of developers and QA engineers.',
+            goal='Analyze requirements, break them down into tasks, and delegate them to appropriate agents. Do NOT attempt to use tools you do not have.',
+            backstory='You are a highly experienced software engineering manager. Your job is to plan and delegate. You do not write code or files yourself; you only analyze and coordinate. Stick to your designated role.',
             llm=local_llm,
             verbose=True,
-            allow_delegation=True
+            allow_delegation=True,
+            max_iter=10
         )
 
     def developer_agent(self):
         return Agent(
             role='Senior Developer',
-            goal='Write clean, efficient, and well-documented Python code based on the given tasks, and save them to files.',
-            backstory='You are a brilliant Senior Software Engineer. You excel at functional programming, object-oriented design, and writing production-ready code with no bugs. You must always write the code to disk using the write_file tool.',
+            goal='Write clean, efficient, and well-documented Python code based on the given tasks. You MUST save your code to files using the write_file tool.',
+            backstory='You are a brilliant Senior Software Engineer. You excel at writing production-ready code. You only have access to read_file and write_file tools. Do not try to use any other tools.',
             llm=local_llm,
             tools=[read_file, write_file],
             verbose=True,
-            allow_delegation=False
+            allow_delegation=False,
+            max_iter=10
         )
 
     def qa_agent(self):
         return Agent(
             role='Quality Assurance Specialist',
-            goal='Review code, write unit tests, save the tests to files, and ensure all requirements are met before deployment.',
-            backstory='You are a strict and detail-oriented QA engineer. You catch every bug before it goes to production. You write thorough tests and demand high code quality. You must write your test files to disk using the write_file tool.',
+            goal='Review code and write unit tests. You MUST save your tests to files using the write_file tool.',
+            backstory='You are a strict QA engineer. You catch bugs and write thorough tests. You only have access to read_file and write_file tools. Do not try to use any other tools.',
             llm=local_llm,
             tools=[read_file, write_file],
             verbose=True,
-            allow_delegation=False
+            allow_delegation=False,
+            max_iter=10
+        )
+
+    def devops_agent(self):
+        return Agent(
+            role='DevOps Engineer',
+            goal='Manage the repository using Git operations. Add, commit, and push files to GitHub.',
+            backstory='You are an expert DevOps engineer who ensures code is properly versioned and deployed. You use the "Git Operations" tool to manage the repository.',
+            llm=local_llm,
+            tools=[git_operation],
+            verbose=True,
+            allow_delegation=False,
+            max_iter=10
         )
