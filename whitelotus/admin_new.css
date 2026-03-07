@@ -1,0 +1,196 @@
+/* Admin Redesign - Premium Glassmorphism */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+:root {
+    --primary: #04AA6D;
+    --primary-glow: rgba(4, 170, 109, 0.4);
+    --bg-dark: #052c38;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-main: #ffffff;
+    --text-dim: #b0b0b0;
+}
+
+body.loginmainpage {
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+    background: radial-gradient(circle at top left, #052c38 0%, #000000 100%);
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.mainconform {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+    z-index: 10;
+}
+
+.loginlogocon {
+    text-align: center;
+    margin-bottom: 30px;
+    height: auto;
+}
+
+.logologin {
+    width: 160px;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+    float: none; /* Override legacy */
+    margin: 0 auto;
+}
+
+.loginform {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 25px 45px rgba(0,0,0,0.5);
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+.loginform label {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    font-weight: 300;
+}
+
+.inputtextst {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    color: var(--text-main);
+    font-size: 1rem;
+    margin-bottom: 24px;
+    transition: all 0.3s ease;
+}
+
+.inputtextst:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 0 15px var(--primary-glow);
+}
+
+/* Password eye container */
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-wrapper .inputtextst {
+    padding-right: 50px;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--text-dim);
+    transition: color 0.3s;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    opacity: 0.6;
+    margin-top: -12px; /* Adjust for margin block */
+}
+
+.eye-icon:hover {
+    color: var(--text-main);
+    opacity: 1;
+}
+
+.buttonsubmitform {
+    background: linear-gradient(135deg, #04AA6D 0%, #038a58 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(4, 170, 109, 0.2);
+}
+
+.buttonsubmitform:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(4, 170, 109, 0.4);
+    opacity: 1;
+}
+
+.buttonsubmitform:active {
+    transform: translateY(0);
+}
+
+.g-recaptcha {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.footer {
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    background: transparent;
+    color: var(--text-dim);
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 0;
+}
+
+.b-footer p {
+    margin: 5px 0;
+}
+
+.footer img {
+    filter: grayscale(1) invert(1);
+    opacity: 0.5;
+    margin-top: 10px;
+}
+
+/* Responsive adjustment */
+@media (max-width: 480px) {
+    .loginform {
+        padding: 30px 20px;
+        border-radius: 0;
+        background: transparent;
+        border: none;
+        backdrop-filter: none;
+        box-shadow: none;
+    }
+    .mainconform {
+        max-width: 100%;
+    }
+    body.loginmainpage {
+        align-items: flex-start;
+        padding-top: 50px;
+    }
+}

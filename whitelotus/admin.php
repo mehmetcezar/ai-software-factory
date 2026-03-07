@@ -7,128 +7,14 @@
         <title>https://whitelotustest.online/</title>
         <meta name="ktmmo" content="kira satış danışman emlak alım">
         <link rel="stylesheet" type="text/css" href="main.css?rnd=<?php echo rand()?>">
+        <link rel="stylesheet" type="text/css" href="admin_new.css?rnd=<?php echo rand()?>">
         <link rel="shortcut icon" type="image/x-icon" href="logo/logo.jpeg" /> 
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>
-    
-    <style>
-
-.overlay {
-  height: 0%;
-  width: 100%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.9);
-  overflow-y: hidden;
-  transition: 0.5s;
-}
-
-.overlay-content {
-  position: relative;
-  top: 25%;
-  width: 100%;
-  text-align: center;
-  margin-top: 30px;
-}
-
-.overlay a {
-  padding: 8px;
-  text-decoration: none;
-  font-size: 36px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.overlay a:hover, .overlay a:focus {
-  color: #f1f1f1;
-}
-
-.overlay .closebtn {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
-}
-
-@media screen and (max-height: 450px) {
-  .overlay {overflow-y: auto;}
-  .overlay a {font-size: 20px}
-  .overlay .closebtn {
-  font-size: 40px;
-  top: 15px;
-  right: 35px;
-  }
-}
-</style>
     
     
 </head>
     
 <body class="loginmainpage">
-  <!--
-    <div id="myNav" class="overlay" >
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <div class="overlay-content" style="font-size:14px;">
-    <a href="./files/LAB.pdf">LAB Bilgi Formu</a>
-    <a href="./files/LABSSS.pdf">SSS</a>
-      <a href="./files/LABS.pdf">LAB</a>
-      <a href="./files/LABS.pdf">LAB</a>
-  </div>
-</div> -->
-
-<!--<span style="font-size:15px;cursor:pointer" onclick="openNav()">&#9776; Genel Bilgi İçin Tıkla</span>-->
-   <!--
-    <script>
-function openNav() {
-  document.getElementById("myNav").style.height = "100%";
-}
-
-function closeNav() {
-  document.getElementById("myNav").style.height = "0%";
-}
-</script>
-    <br><br>
-     <div id="myNav2" class="overlay" >
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;</a>
-  <div class="overlay-content" style="font-size:14px;">
-    <a href="./files/KAROT%20NUMUNES%C4%B0%20ALIM%20TALEP%20FORMU-Okul%20Binalar%C4%B1%20i%C3%A7in.docx">Karot Numunesi</a>
-    <a href="./files/MEB%20G%C3%BC%C3%A7lendirme%20Projeleri%20Prosed%C3%BCr%C3%BC.docx">Güçlendirme Prosedürü</a>
-      <a href="./files/Teklif%20formu.doc">Teklif Formu</a>
-      <a href="./files/MEB%20OKUL%20BI%CC%87NALARI%20DEG%CC%86ERLENDI%CC%87RME%20LI%CC%87STESI%CC%87%20son.pdf">Değerlendirme Listesi</a>
-      <a href="https://drive.google.com/drive/folders/1UItpLusL-PGzoFHdAGKxqPkwbw_d6t64?usp=sharing">Görsel Planlar</a>
-      <a href="./files/MEB-%C3%87al%C4%B1%C5%9Fma.pdf">Labaratuar ve Analiz Bilgileri</a>
-  </div>
-</div> 
-<span style="font-size:15px;cursor:pointer" onclick="openNav2()">&#9776; Okullar Projelendirme Bilgileri İçin Tıkla</span>
-    <script>
-function openNav2() {
-  document.getElementById("myNav2").style.height = "100%";
-}
-
-function closeNav2() {
-  document.getElementById("myNav2").style.height = "0%";
-}
-</script> 
-    
-    -->
-    
-   <!-- <div class="topnav" id="myTopnav">
-<a href="./files/IMO_RVS-4AE.pdf" download>BBF</a>
-<a href="./files/SSS.pdf" download>SSS</a>
-
-</div>-->
-    
-<!--<a href="./files/IMO_RVS-4AE.pdf" download><img src="image/menu/pdfpic.jpg" alt="" style="width:40px; height:auto; padding:0px 0px 0px 10px;"></a><p style="font-size:12px;font-weight:bolder;">Bina Bilgi Formunu İndir</p>
-        <a href="./files/SSS.pdf" download><img src="image/menu/pdfpic.jpg" alt="" style="width:40px; height:auto; padding:0px 0px 0px 10px;"></a><p style="font-size:12px;font-weight:bolder;">SSS İndir</p>-->
-    <!--
-    <div class="container">
-    <label><b>Sitenin Bakımı Yapılmaktadır. Daha sonra tekrar deneyiniz..</b></label>
-    </div>
-    
-    -->
     <?php
      include 'usersession.php';
             //echo "OKpre";
@@ -136,27 +22,56 @@ function closeNav2() {
     ?>
    
     <div class="mainconform">
-<div class="loginlogocon">
-    <img src="logo/logo.jpeg" alt="Login Page" class="logologin">
-    
-</div>
-<form action="loginactionpage.php" method="post" class="loginform" id="loginform" onsubmit="return validateloginpage()">
-  <div class="imgcontainer">
-  </div>
+        <div class="loginlogocon">
+            <img src="logo/logo.jpeg" alt="White Lotus" class="logologin">
+        </div>
 
-  <div class="container">
-    <label for="uname"><b>Kullanıcı Adı</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" id="uname" class="inputtextst">
+        <form action="loginactionpage.php" method="post" class="loginform" id="loginform" onsubmit="return validateloginpage()">
+          <div class="container">
+            <label for="uname"><b>Kullanıcı Adı</b></label>
+            <input type="text" placeholder="Kullanıcı adınızı girin" name="uname" id="uname" class="inputtextst">
 
-    <label for="psw"><b>Şifre</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" id="psw" class="inputtextst">
-       <div class="g-recaptcha" style="transform: scale(0.77);-webkit-transform: scale(0.77); transform-origin: 0 0;
--webkit-transform-origin: 0 0;" data-theme="light" data-sitekey="6LemsP0pAAAAAHMT75XXrlw69_t_oRNWxlwURsNW"></div>
-          <div id="g-recaptcha-error3"></div> 
-    <button type="submit" class="buttonsubmitform">Giriş</button>
-  </div>
-</form>
-</div>
+            <label for="psw"><b>Şifre</b></label>
+            <div class="password-wrapper">
+                <input type="password" placeholder="Şifrenizi girin" name="psw" id="psw" class="inputtextst">
+                <span id="togglePassword" class="eye-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </span>
+            </div>
+
+            <div class="g-recaptcha" style="transform: scale(0.85); transform-origin: center center;" data-theme="dark" data-sitekey="6LemsP0pAAAAAHMT75XXrlw69_t_oRNWxlwURsNW"></div>
+            <div id="g-recaptcha-error3" style="text-align: center; margin-top: 5px;"></div> 
+            
+            <button type="submit" class="buttonsubmitform">Giriş Yap</button>
+          </div>
+        </form>
+    </div>
+
+    <script>
+    // Password visibility toggle (Hold to show)
+    const pswInput = document.getElementById('psw');
+    const toggleBtn = document.getElementById('togglePassword');
+
+    const showPassword = () => { pswInput.type = 'text'; };
+    const hidePassword = () => { pswInput.type = 'password'; };
+
+    toggleBtn.addEventListener('mousedown', showPassword);
+    toggleBtn.addEventListener('mouseup', hidePassword);
+    toggleBtn.addEventListener('mouseleave', hidePassword);
+
+    // Support for touch devices
+    toggleBtn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        showPassword();
+    });
+    toggleBtn.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        hidePassword();
+    });
+    </script>
     
  
  <script>
