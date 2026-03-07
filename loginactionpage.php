@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<?php include_once('usersession.php'); ?>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">

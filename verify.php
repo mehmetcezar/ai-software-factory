@@ -1,159 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noveltech - E-posta Doğrulama</title>
+    <link rel="stylesheet" href="register.css?rnd=<?php echo rand()?>">
+    <link rel="shortcut icon" type="image/x-icon" href="image/logo/noveltechlogo.jpeg" />
+    <style>
+        .verify-box {
+            text-align: center;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .code-input {
+            letter-spacing: 0.5rem;
+            font-size: 2rem;
+            text-align: center;
+            padding: 10px;
+            width: 80%;
+            margin: 20px 0;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid #4ade80;
+            color: #fff;
+            border-radius: 5px;
+        }
+    </style>
+</head>
 <?php
-
-require_once 'GoogleAuthenticator.php'; // composer kullanmıyorsan bu dosyayı elle indir
-include 'userdbcon.php';
-include 'usersession.php';
 session_start();
-
-$secretkey = $_POST['secretkey'] ?? '';
-$uname = $_POST['uname'] ?? '';
-$kultipi = $_POST['kultipi'] ?? '';
-$code = $_POST['code'] ?? '';
-
-$_SESSION['kultipi']=$kultipi;
-
-define('USER_SECRET', $secretkey);
-    $ga = new PHPGangsta_GoogleAuthenticator();
-    $check = $ga->verifyCode(USER_SECRET, $code, 2); // 60 saniye tolerans
-/*echo $secretkey."<br>";
-echo $uname."<br>";
-echo $kultipi."<br>";
-echo $code."<br>";
-echo $check."<br>";
-exit();*/
-    if ($check) {
-        $_SESSION['loggedin'] = true;
-        
-
-                 if($kultipi=="admin")
-                     {
-                       $_SESSION['kultipi']="admin";
-                     
-        if(!userloginwrite($uname)){
-            Notdevam();
-        }
-        date_default_timezone_set('Europe/Nicosia');
-       $date=date("Y-m-d");
-      $time=date("H:i:s"); if(!usersessionwrite($_SESSION['uname'],$_SESSION['sessionid'],$time,$date)){
-            Notdevam();
-        }
-                     
-                     
-                        admindevam();   
-                     }
-
-                     if($kultipi=="yetkili")
-                     {
-                        $_SESSION['kultipi']="yetkili";
-                            if(!userloginwrite($uname)){
-            Notdevam();
-        }
-        date_default_timezone_set('Europe/Nicosia');
-       $date=date("Y-m-d");
-      $time=date("H:i:s"); if(!usersessionwrite($uname,$_SESSION['sessionid'],$time,$date)){
-            Notdevam();
-        }
-                       yetkilidevam();  
-                     }
-
-                     if($kultipi=="muhasebe")
-                     {
-                        $_SESSION['kultipi']="muhasebe";
-                         if(!userloginwrite($uname)){
-            Notdevam();
-        }
-        date_default_timezone_set('Europe/Nicosia');
-       $date=date("Y-m-d");
-      $time=date("H:i:s"); if(!usersessionwrite($uname,$_SESSION['sessionid'],$time,$date)){
-            Notdevam();
-        }
-                         
-                       muhasebedevam();  
-                     }
-
-                     if($kultipi=="kiralamasorumlusu")
-                     {
-                        $_SESSION['kultipi']="kiralamasorumlusu";
-                         if(!userloginwrite($uname)){
-            Notdevam();
-        }
-        date_default_timezone_set('Europe/Nicosia');
-       $date=date("Y-m-d");
-      $time=date("H:i:s"); if(!usersessionwrite($uname,$_SESSION['sessionid'],$time,$date)){
-            Notdevam();
-        }
-                       kiralamasorumlusudevam();  
-                     }
-
-                     if($kultipi=="musteri")
-                     {
-                       $_SESSION['kultipi']="musteri";
-                         if(!userloginwrite($uname)){
-            Notdevam();
-        }
-        date_default_timezone_set('Europe/Nicosia');
-       $date=date("Y-m-d");
-      $time=date("H:i:s"); if(!usersessionwrite($uname,$_SESSION['sessionid'],$time,$date)){
-            Notdevam();
-        }
-                       musteridevam();  
-                     }
-                }
-           else {
-        hatalidogrulamadevam();
-    }
-
-function Notdevam()
-{
-
-header("Location: https://whitelotustest.online/admin.php"); /* Redirect browser */
-exit();	
-	
+if (!isset($_SESSION['verify_username'])) {
+    header("Location: register.php");
+    exit();
 }
-function admindevam()
-{
-
-header("Location: https://whitelotustest.online/adminpage.php"); /* Redirect browser */
-exit();	
-	
-}
-function yetkilidevam()
-{
-
-header("Location: https://whitelotustest.online/yetkilipage.php"); /* Redirect browser */
-exit();	
-	
-}
-              
-function muhasebedevam()
-{
-
-header("Location: https://whitelotustest.online/muhasebepage.php"); 
-exit();
-}
-	
-
-function kiralamasorumlusudevam()
-{
-
-header("Location: https://whitelotustest.online/kiralamasorumlusupage.php");
-exit();	
-	
-}
-function musteridevam()
-{
-
-header("Location: https://whitelotustest.online/musteripage.php"); 
-exit();	
-	
-}
-
-function hatalidogrulamadevam()
-{
-
-header("Location: https://whitelotustest.online/2wauthhatalipage.php"); 
-exit();	
-	
-}
-
 ?>
+<body>
+    <div class="verify-box">
+        <h2>E-posta Doğrulama</h2>
+        <p>Hesabınızı aktifleştirmek için e-posta adresinize gönderdiğimiz 6 haneli kodu girin.</p>
+        
+        <form action="verifyaction.php" method="POST">
+            <input type="text" name="code" class="code-input" placeholder="000000" maxlength="6" pattern="[0-9]{6}" required autofocus>
+            <br>
+            <button type="submit" class="reg-button">Doğrula ve Başla</button>
+        </form>
+    </div>
+</body>
+</html>

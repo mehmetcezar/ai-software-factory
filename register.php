@@ -20,15 +20,19 @@
                 <input type="text" name="company_name" class="input-field" placeholder="Örn: Noveltech Emlak" required>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                <div class="form-group">
-                    <label>Adınız</label>
-                    <input type="text" name="first_name" class="input-field" placeholder="Ad" required>
-                </div>
-                <div class="form-group">
-                    <label>Soyadınız</label>
-                    <input type="text" name="last_name" class="input-field" placeholder="Soyad" required>
-                </div>
+            <div class="form-group">
+                <label>Adınız</label>
+                <input type="text" name="first_name" class="input-field" placeholder="Ad" required>
+            </div>
+
+            <div class="form-group">
+                <label>Soyadınız</label>
+                <input type="text" name="last_name" class="input-field" placeholder="Soyad" required>
+            </div>
+
+            <div class="form-group">
+                <label>Telefon Numarası</label>
+                <input type="tel" name="phone" class="input-field" placeholder="5XXXXXXXXX" pattern="5[0-9]{9}" title="Format: 5XXXXXXXXX (10 hane)" required>
             </div>
 
             <div class="form-group">
