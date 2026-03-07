@@ -1,0 +1,67 @@
+/* Ensuring the table is fully responsive */
+#example {
+    width: 100% !important;
+}
+
+/* Style the dropdown menu for better visibility */
+.dropdownbb {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtnbb {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-contentbb {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdownbb:hover .dropdown-contentbb {
+    display: block;
+}
+
+/* Table Responsiveness */
+@media (max-width: 768px) {
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter {
+        font-size: 14px; /* Decrease font size */
+    }
+
+    /* Stack columns in a readable format */
+    table.dataTable thead {
+        display: none; /* Hide header on small screens */
+    }
+
+    table.dataTable tbody td {
+        display: block;
+        text-align: right;
+        position: relative;
+        padding-left: 50%; /* Makes room for the "column" label */
+    }
+
+    table.dataTable tbody td:before {
+        /* Create a pseudo label for each cell */
+        content: attr(data-label);
+        position: absolute;
+        left: 6px;
+        top: 6px;
+        font-weight: bold;
+    }
+
+    /* Improve the layout when a column is clicked to show details */
+    table.dataTable tbody tr td:first-child {
+        border-top: 1px solid #ddd;
+    }
+}
