@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
          <title>https://whitelotustest.online/</title>
-        <meta name="ktmmo" content="kira satış danışman emlak alım">
+        <meta name="ktmmo" content="kira satÄ±ÅŸ danÄ±ÅŸman emlak alÄ±m">
         <link rel="stylesheet" type="text/css" href="main.css?rnd=<?php echo rand()?>">
         <link rel="shortcut icon" type="image/x-icon" href="image/logo/logo.jpeg" /> 
         <!-- winter candd font -->  
@@ -59,14 +59,14 @@ function goBack() {
 }
  mysqli_close($conn);
   //echo "OKprepre";
-//google recaptcha doğrulama 
+//google recaptcha doÄŸrulama 
 
          if(isset($_POST['g-recaptcha-response'])){
           $captcha=$_POST['g-recaptcha-response'];
              //echo $captcha;
         }
         if(!$captcha){
-          echo 'Captcha doldurulmadı. Hata!';
+          echo 'Captcha doldurulmadÄ±. Hata!';
       Notdevam();
     exit;
         }
@@ -80,7 +80,7 @@ function goBack() {
         // should return JSON with success as true
               //echo $responseKeys; 
         if($responseKeys["success"]) {
-//google recaptcha doğrulama sonu  
+//google recaptcha doÄŸrulama sonu  
     //echo "sucess";
 
     
@@ -116,14 +116,15 @@ include 'userdbcon.php';
 if(userlogincheck($username)&&usersessioncheck($username,$session_id)&&checkadmin($username)){
    
     $_SESSION['kultipi']="admin";
+                    $_SESSION['company_id'] = getCompanyId($username);
     $_SESSION['uname']=$username;
-        echo '<html><body class="makememiddlebody"><div class="containercap"><div class="textcapdiv"><z class="textcap">Daha önceden giriş yapılmıştır. Devam etmek için aşağıdaki butona basınız.</z></div><div class="gobackcapdiv"><button class="gobackcap" type="submit" name="submit" onclick="opensessionadmin()">Admin Sayfası</button></div></div></body></html>';
+        echo '<html><body class="makememiddlebody"><div class="containercap"><div class="textcapdiv"><z class="textcap">Daha Ã¶nceden giriÅŸ yapÄ±lmÄ±ÅŸtÄ±r. Devam etmek iÃ§in aÅŸaÄŸÄ±daki butona basÄ±nÄ±z.</z></div><div class="gobackcapdiv"><button class="gobackcap" type="submit" name="submit" onclick="opensessionadmin()">Admin SayfasÄ±</button></div></div></body></html>';
          
     }
     else if(userlogincheck($username)&&usersessioncheck($username,$session_id)&&checkyetkili($username)){
         $_SESSION['kultipi']="yetkili";
         $_SESSION['uname']=$username;
-        echo '<html><body class="makememiddlebody"><div class="containercap"><div class="textcapdiv"><z class="textcap">Daha önceden giriş yapılmıştır. Devam etmek için aşağıdaki butona basınız.</z></div><div class="gobackcapdiv"><button class="gobackcap" type="submit" name="submit" onclick="opensessionyetkili()">Kullanıcı Sayfasına Git</button></div></div></body></html>';
+        echo '<html><body class="makememiddlebody"><div class="containercap"><div class="textcapdiv"><z class="textcap">Daha Ã¶nceden giriÅŸ yapÄ±lmÄ±ÅŸtÄ±r. Devam etmek iÃ§in aÅŸaÄŸÄ±daki butona basÄ±nÄ±z.</z></div><div class="gobackcapdiv"><button class="gobackcap" type="submit" name="submit" onclick="opensessionyetkili()">KullanÄ±cÄ± SayfasÄ±na Git</button></div></div></body></html>';
          
     }
             
@@ -131,19 +132,19 @@ if(userlogincheck($username)&&usersessioncheck($username,$session_id)&&checkadmi
         else if(userlogincheck($username)&&usersessioncheck($username,$session_id)&&checkmuhasebe($username)){
             $_SESSION['kultipi']="muhasebe";
             $_SESSION['uname']=$username;
-        echo '<html><body class="makememiddlebody"><div class="containercap"><div class="textcapdiv"><z class="textcap">Daha önceden giriş yapılmıştır. Devam etmek için aşağıdaki butona basınız.</z></div><div class="gobackcapdiv"><button class="gobackcap" type="submit" name="submit" onclick="opensessionmuhasebe()">Kullanıcı Sayfasına Git</button></div></div></body></html>';
+        echo '<html><body class="makememiddlebody"><div class="containercap"><div class="textcapdiv"><z class="textcap">Daha Ã¶nceden giriÅŸ yapÄ±lmÄ±ÅŸtÄ±r. Devam etmek iÃ§in aÅŸaÄŸÄ±daki butona basÄ±nÄ±z.</z></div><div class="gobackcapdiv"><button class="gobackcap" type="submit" name="submit" onclick="opensessionmuhasebe()">KullanÄ±cÄ± SayfasÄ±na Git</button></div></div></body></html>';
          
     }
             else if(userlogincheck($username)&&usersessioncheck($username,$session_id)&&checkkiralamasorumlusu($username)){
                 $_SESSION['kultipi']="kiralamasorumlusu";
                 $_SESSION['uname']=$username;
-        echo '<html><body class="makememiddlebody"><div class="containercap"><div class="textcapdiv"><z class="textcap">Daha önceden giriş yapılmıştır. Devam etmek için aşağıdaki butona basınız.</z></div><div class="gobackcapdiv"><button class="gobackcap" type="submit" name="submit" onclick="opensessionkiralamasorumlusu()">Kullanıcı Sayfasına Git</button></div></div></body></html>';
+        echo '<html><body class="makememiddlebody"><div class="containercap"><div class="textcapdiv"><z class="textcap">Daha Ã¶nceden giriÅŸ yapÄ±lmÄ±ÅŸtÄ±r. Devam etmek iÃ§in aÅŸaÄŸÄ±daki butona basÄ±nÄ±z.</z></div><div class="gobackcapdiv"><button class="gobackcap" type="submit" name="submit" onclick="opensessionkiralamasorumlusu()">KullanÄ±cÄ± SayfasÄ±na Git</button></div></div></body></html>';
          
     }
                 else if(userlogincheck($username)&&usersessioncheck($username,$session_id)&&checkmusteri($username)){
                     $_SESSION['kultipi']="musteri";
                     $_SESSION['uname']=$username;
-        echo '<html><body class="makememiddlebody"><div class="containercap"><div class="textcapdiv"><z class="textcap">Daha önceden giriş yapılmıştır. Devam etmek için aşağıdaki butona basınız.</z></div><div class="gobackcapdiv"><button class="gobackcap" type="submit" name="submit" onclick="opensessionmusteri()">Kullanıcı Sayfasına Git</button></div></div></body></html>';
+        echo '<html><body class="makememiddlebody"><div class="containercap"><div class="textcapdiv"><z class="textcap">Daha Ã¶nceden giriÅŸ yapÄ±lmÄ±ÅŸtÄ±r. Devam etmek iÃ§in aÅŸaÄŸÄ±daki butona basÄ±nÄ±z.</z></div><div class="gobackcapdiv"><button class="gobackcap" type="submit" name="submit" onclick="opensessionmusteri()">KullanÄ±cÄ± SayfasÄ±na Git</button></div></div></body></html>';
          
     }
  
@@ -181,6 +182,7 @@ if(userlogincheck($username)&&usersessioncheck($username,$session_id)&&checkadmi
              if($isadmin)
              {
                     $_SESSION['kultipi']="admin";
+                    $_SESSION['company_id'] = getCompanyId($username);
                   
                if($qr_status==1) 
                {
@@ -230,6 +232,7 @@ if(userlogincheck($username)&&usersessioncheck($username,$session_id)&&checkadmi
         }
                    
                 yetkilidevam();  
+        $_SESSION['company_id'] = getCompanyId($username);
                } 
              }
             
@@ -258,6 +261,7 @@ if(userlogincheck($username)&&usersessioncheck($username,$session_id)&&checkadmi
                    
                    
                 muhasebedevam();
+        $_SESSION['company_id'] = getCompanyId($username);
                }
                  
                  
@@ -289,6 +293,7 @@ if(userlogincheck($username)&&usersessioncheck($username,$session_id)&&checkadmi
                    
                    
                 kiralamasorumlusudevam(); 
+        $_SESSION['company_id'] = getCompanyId($username);
                } 
              }
              $musteri=checkmusteri($username);
@@ -316,6 +321,7 @@ if(userlogincheck($username)&&usersessioncheck($username,$session_id)&&checkadmi
                    
                    
                 musteridevam();  
+        $_SESSION['company_id'] = getCompanyId($username);
                } 
                  
              }
@@ -325,7 +331,7 @@ if(userlogincheck($username)&&usersessioncheck($username,$session_id)&&checkadmi
     }
     else{
          
-         echo '<html><body class="makememiddlebody"><div class="containercap"><div class="textcapdiv"><z class="textcap">Giriş için yetkili değilsiniz. Kullanıcı adı veya şifresi hatalı. Yeniden deneyiniz.</z></div><div class="gobackcapdiv"><button class="gobackcap" type="submit" name="submit" onclick="goBack()">Geri</button></div></div></body></html>';
+         echo '<html><body class="makememiddlebody"><div class="containercap"><div class="textcapdiv"><z class="textcap">GiriÅŸ iÃ§in yetkili deÄŸilsiniz. KullanÄ±cÄ± adÄ± veya ÅŸifresi hatalÄ±. Yeniden deneyiniz.</z></div><div class="gobackcapdiv"><button class="gobackcap" type="submit" name="submit" onclick="goBack()">Geri</button></div></div></body></html>';
     exit;
         //$hash = password_hash($password, PASSWORD_DEFAULT);
         //var_dump($hashed_password);
@@ -358,6 +364,7 @@ exit();
 	
 }
 function yetkilidevam()
+        $_SESSION['company_id'] = getCompanyId($username);
 {
 
 header("Location: https://whitelotustest.online/yetkilipage.php"); /* Redirect browser */
@@ -366,6 +373,7 @@ exit();
 }
               
 function muhasebedevam()
+        $_SESSION['company_id'] = getCompanyId($username);
 {
 
 header("Location: https://whitelotustest.online/muhasebepage.php"); 
@@ -374,6 +382,7 @@ exit();
 	
 
 function kiralamasorumlusudevam()
+        $_SESSION['company_id'] = getCompanyId($username);
 {
 
 header("Location: https://whitelotustest.online/kiralamasorumlusupage.php");
@@ -381,6 +390,7 @@ exit();
 	
 }
 function musteridevam()
+        $_SESSION['company_id'] = getCompanyId($username);
 {
 
 header("Location: https://whitelotustest.online/musteripage.php"); 
