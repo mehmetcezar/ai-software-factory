@@ -27,7 +27,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         unset($_SESSION['verify_username']);
         header("Location: admin.php?verify=success");
     } else {
-        header("Location: verify.php?error=invalid");
+        // Failure: Show error and redirect to home page
+        echo "<html><body style='background:#111; color:#fff; font-family:sans-serif; display:flex; align-items:center; justify-content:center; height:100vh; text-align:center;'>";
+        echo "<div><h2 style='color:#ff4d4d;'>Hata: Geçersiz Doğrulama Kodu</h2>";
+        echo "<p>Girdiğiniz kod hatalı veya süresi dolmuş olabilir.</p>";
+        echo "<p>Lütfen tekrar deneyiniz veya destek ekibiyle iletişime geçiniz.</p>";
+        echo "<p>3 saniye içinde ana sayfaya yönlendiriliyorsunuz...</p></div>";
+        echo "<script>setTimeout(function(){ window.location.href = 'index.php'; }, 3000);</script>";
+        echo "</body></html>";
     }
 
     mysqli_close($conn);

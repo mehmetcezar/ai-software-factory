@@ -50,6 +50,11 @@
                 <input type="password" name="password" class="input-field" placeholder="••••••••" required>
             </div>
 
+            <div class="form-group">
+                <label>Şifre Tekrar</label>
+                <input type="password" name="password_confirm" class="input-field" placeholder="••••••••" required>
+            </div>
+
             <button type="submit" class="reg-button">Hesabı Oluştur</button>
         </form>
 

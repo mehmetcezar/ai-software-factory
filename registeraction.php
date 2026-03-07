@@ -11,6 +11,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
     $password_raw = $_POST['password'];
+    $password_confirm = $_POST['password_confirm'];
+
+    if ($password_raw !== $password_confirm) {
+        die("Hata: Şifreler birbiriyle uyuşmuyor. Lütfen kontrol edip tekrar deneyiniz.");
+    }
 
     $conn = mysqli_connect($config['DB_HOST'], $config['DB_USERNAME'], $config['DB_PASSWORD'], $config['DB_DATABASE']);
     
