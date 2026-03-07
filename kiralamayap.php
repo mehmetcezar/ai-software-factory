@@ -823,7 +823,7 @@ odenendepozito=odenendepozito.trim();
                <select name="stopajvergisi" id="stopajvergisi" class="form-control">
                   <option></option>
                   <option>MAL SAHİBİ</option>
-                  <option>WHITELOTUS</option>
+                  <option>NOVELTECH</option>
               </select>
             </div>
           </div>

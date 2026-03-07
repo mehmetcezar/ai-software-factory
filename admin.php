@@ -23,7 +23,7 @@
    
     <div class="mainconform">
         <div class="loginlogocon">
-            <img src="logo/logo.jpeg" alt="White Lotus" class="logologin">
+            <img src="logo/logo.jpeg" alt="Noveltech" class="logologin">
         </div>
 
         <form action="loginactionpage.php" method="post" class="loginform" id="loginform" onsubmit="return validateloginpage()">
@@ -176,7 +176,7 @@ return (re.test(String(pass).toLowerCase()));
 <div class="b-footer">
 
 <p>
-Tüm Hakları Saklıdır © WHITELOTUS <script>document.write(new Date().getFullYear())</script> </p>
+Tüm Hakları Saklıdır © NOVELTECH <script>document.write(new Date().getFullYear())</script> </p>
 <p>Designed by Noveltech Solutions Ltd.</p><p><img style="max-height:auto;max-width:80px;" src="image/logo/noveltechlogo.jpeg"></p>
     </div>
     </footer> 
