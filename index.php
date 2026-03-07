@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,7 @@
         
         <div class="cta-container">
             <a href="admin.php" class="btn btn-primary">Giriş Yap</a>
-            <a href="userscreate.php" class="btn btn-secondary">Hesap Aç</a>
+            <a href="register.php" class="btn btn-secondary">Hesap Aç</a>
         </div>
     </main>
 
