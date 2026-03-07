@@ -85,11 +85,11 @@ function goBack() {
 
     
 include_once 'usersession.php';
-    $_SESSION['company_id'] = getCompanyId($username);
             //echo "OKpre";
     //usersessiontimecheck();
             
             session_start();
+    $_SESSION['company_id'] = getCompanyId($username);
         $session_id=session_id();
         
         $_SESSION['sessionid']=$session_id;
