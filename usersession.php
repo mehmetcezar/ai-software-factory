@@ -1,7 +1,7 @@
-    <?php
+﻿    <?php
 date_default_timezone_set('Europe/Nicosia');
 	function usersessionwrite($uname,$sessionx,$timesession,$datesession){
-		include 'config.php';
+		include_once 'config.php'
 		
 		$servername = $config['DB_HOST'];
 $database = $config['DB_DATABASE'];
@@ -32,7 +32,7 @@ mysqli_close($conn);
 
 
 	function usersessionupdate($uname){
-		include 'config.php';
+		include_once 'config.php'
 		
 		$servername = $config['DB_HOST'];
 $database = $config['DB_DATABASE'];
@@ -65,7 +65,7 @@ mysqli_close($conn);
 
 
 function usersessioncheck($uname,$sessionx){
-		include 'config.php';
+		include_once 'config.php'
 		
 		$servername = $config['DB_HOST'];
 $database = $config['DB_DATABASE'];
@@ -111,7 +111,7 @@ mysqli_close($conn);
 
 
 function usersessiontimecheck(){
-		/*include 'config.php';
+		/*include_once 'config.php'
 		
 		$servername = $config['DB_HOST'];
 $database = $config['DB_DATABASE'];
@@ -172,7 +172,7 @@ mysqli_close($conn);
 
 
 function userlogincheck($uname){
-		include 'config.php';
+		include_once 'config.php'
 		
 		$servername = $config['DB_HOST'];
 $database = $config['DB_DATABASE'];
@@ -219,7 +219,7 @@ mysqli_close($conn);
 
 
 function userloginwrite($uname){
-		include 'config.php';
+		include_once 'config.php'
 		
 		$servername = $config['DB_HOST'];
 $database = $config['DB_DATABASE'];
@@ -251,7 +251,7 @@ mysqli_close($conn);
 
 
 function userloginout($uname){
-		include 'config.php';
+		include_once 'config.php'
 		
 		$servername = $config['DB_HOST'];
 $database = $config['DB_DATABASE'];
@@ -281,7 +281,7 @@ mysqli_close($conn);
 
 
 function userdrop15($uname){
-		include 'config.php';
+		include_once 'config.php'
 		
 		$servername = $config['DB_HOST'];
 $database = $config['DB_DATABASE'];
@@ -314,7 +314,7 @@ mysqli_close($conn);
 
 
 function passwordcompare($uname,$pass){
-		include 'config.php';
+		include_once 'config.php'
 		
 		$servername = $config['DB_HOST'];
 $database = $config['DB_DATABASE'];
@@ -365,7 +365,7 @@ mysqli_close($conn);
 
 
 function passupdate($uname,$newpass){
-		include 'config.php';
+		include_once 'config.php'
 		
 		$servername = $config['DB_HOST'];
 $database = $config['DB_DATABASE'];
@@ -397,7 +397,7 @@ mysqli_close($conn);
 
 
 function checkadmin($uname){
-		include 'config.php';
+		include_once 'config.php'
 		
 		$servername = $config['DB_HOST'];
 $database = $config['DB_DATABASE'];
@@ -449,7 +449,7 @@ mysqli_close($conn);
 
 
 function checkyetkili($uname){
-		include 'config.php';
+		include_once 'config.php'
 		
 		$servername = $config['DB_HOST'];
 $database = $config['DB_DATABASE'];
@@ -500,7 +500,7 @@ mysqli_close($conn);
 
 
 function checkmuhasebe($uname){
-		include 'config.php';
+		include_once 'config.php'
 		
 		$servername = $config['DB_HOST'];
 $database = $config['DB_DATABASE'];
@@ -551,7 +551,7 @@ mysqli_close($conn);
 
 
 function checkkiralamasorumlusu($uname){
-		include 'config.php';
+		include_once 'config.php'
 		
 		$servername = $config['DB_HOST'];
 $database = $config['DB_DATABASE'];
@@ -603,7 +603,7 @@ mysqli_close($conn);
 
 
 function checkmusteri($uname){
-		include 'config.php';
+		include_once 'config.php'
 		
 		$servername = $config['DB_HOST'];
 $database = $config['DB_DATABASE'];
@@ -655,7 +655,7 @@ mysqli_close($conn);
 
 
 function getCompanyId($uname){
-    include 'config.php';
+    include_once 'config.php'
     $conn = mysqli_connect($config['DB_HOST'], $config['DB_USERNAME'], $config['DB_PASSWORD'], $config['DB_DATABASE']);
     if (!$conn) return 1;
     
