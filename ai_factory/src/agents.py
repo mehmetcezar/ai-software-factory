@@ -1,5 +1,5 @@
 from crewai import Agent, LLM
-from tools import read_file, write_file, git_operation
+from tools import read_file, write_file, git_operation, list_dir
 
 # Configure the local Ollama LLM
 # Note: You can change "llama3.1" to "phi3" or any other model you have downloaded in Ollama.
@@ -58,4 +58,16 @@ class FactoryAgents:
             verbose=True,
             allow_delegation=False,
             max_iter=10
+        )
+
+    def software_architect(self):
+        return Agent(
+            role='Software Architect',
+            goal='Research the existing codebase, understand the architecture, and document it for others.',
+            backstory='You are a master architect who can quickly understand complex systems. You scan the codebase to identify patterns, database schemas, and API endpoints.',
+            llm=local_llm,
+            tools=[read_file, list_dir],
+            verbose=True,
+            allow_delegation=False,
+            max_iter=15
         )

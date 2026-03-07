@@ -57,6 +57,32 @@ def run_software_factory(requirement: str):
     print("######################\n")
     print(result)
 
+def run_research_factory(codebase_path: str):
+    # Ensure we use the absolute path for the architect
+    abs_path = os.path.abspath(codebase_path)
+    print(f"\n--- Starting Research Factory ---")
+    print(f"Target: {abs_path}\n")
+
+    agents = FactoryAgents()
+    architect = agents.software_architect()
+    tasks = FactoryTasks()
+
+    research_task = tasks.research_codebase_task(architect, abs_path)
+
+    research_crew = Crew(
+        agents=[architect],
+        tasks=[research_task],
+        process=Process.sequential,
+        verbose=True
+    )
+
+    result = research_crew.kickoff()
+    
+    print("\n##########################")
+    print("RESEARCH FACTORY COMPLETED")
+    print("##########################\n")
+    print(result)
+
 def main():
     print("Welcome to the AI Software Factory!")
     print("Initializing...")
@@ -71,12 +97,18 @@ def main():
     
     # Demonstration request
     sample_request = "Create a Python function that calculates the Fibonacci sequence up to a given number, including type hints and unit tests."
-    user_input = input(f"\nEnter a task for the factory (or press Enter to use the default sample):\n> ")
+    print(f"\nEnter a task for the factory.")
+    print(f"Tip: To research a project (like whitelotus), type 'research [path]'.")
+    user_input = input(f"> ")
     
     if not user_input.strip():
         user_input = sample_request
         
-    run_software_factory(user_input)
+    if user_input.startswith("research "):
+        path = user_input[9:].strip()
+        run_research_factory(path)
+    else:
+        run_software_factory(user_input)
 
 if __name__ == "__main__":
     main()

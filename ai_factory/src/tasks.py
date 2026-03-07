@@ -54,3 +54,14 @@ class FactoryTasks:
             agent=agent,
             context=context
         )
+
+    def research_codebase_task(self, agent, codebase_path: str):
+        return Task(
+            description=dedent(f"""\
+                Analyze the codebase at '{codebase_path}'. 
+                Identify the core components, folder structure, entry points, and database connection details.
+                Provide a summary that will help developer agents understand how to work on this project.
+            """),
+            expected_output="A comprehensive architecture overview document (Markdown).",
+            agent=agent
+        )
