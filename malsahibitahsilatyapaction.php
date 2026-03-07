@@ -413,7 +413,7 @@ for ($i = 0; $i < $total_count; $i++) {
      $yetkilionay=1;// 1 olunca yetkili onayına gitti demek, 2 olunca ise yetkili onayladı demek.
 
   $malsahibiodemesi="EVET";
-   $sql = "INSERT INTO tahsilat (id, date, tahtarihi, mulkno, yapino, kiralamakey, tahsilatturu, miktar, stgmiktar, parabirimi, tahsilattlrate, tahsilattotlrate, belgepaths, tahsilatnot, malsahibiodemesi, basusername, yetkilionay) VALUES ('', '$date','$tahsilattarihidb','$mulkno', '$yapino','$kaporaid','$tahsilatturudb','$kaporatahMiktardb','$kaporaSterlingdb','$kaporaPBdb','$kaporaTlRatedb','$kaporaToTlRatedb','$kaporabelgepaths','$tahsilatnotdb','$malsahibiodemesi','$uname','$yetkilionay')";
+   $sql = "INSERT INTO tahsilat (id, date, tahtarihi, mulkno, yapino, kiralamakey, tahsilatturu, miktar, stgmiktar, parabirimi, tahsilattlrate, tahsilattotlrate, belgepaths, tahsilatnot, malsahibiodemesi, basusername, yetkilionay, company_id) VALUES ('', '$date','$tahsilattarihidb','$mulkno', '$yapino','$kaporaid','$tahsilatturudb','$kaporatahMiktardb','$kaporaSterlingdb','$kaporaPBdb','$kaporaTlRatedb','$kaporaToTlRatedb','$kaporabelgepaths','$tahsilatnotdb','$malsahibiodemesi','$uname','$yetkilionay', '{$_SESSION['company_id']}')";
     
 /*
     echo "$tahsilattarihidb";echo "<br>";

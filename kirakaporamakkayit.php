@@ -231,7 +231,7 @@ if (!$conn) {
     
 
     
-         if ($result = $conn -> query("SELECT * FROM kirakaporakayit where kirakaporakayit.isdeleted !=1 AND kirakaporakayit.kirakey='$buserid'")) {
+         if ($result = $conn -> query("SELECT * FROM kirakaporakayit where  kirakaporakayit.company_id = '{$_SESSION['company_id']}' AND kirakaporakayit.isdeleted !=1 AND kirakaporakayit.kirakey='$buserid'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
        
         $full_path = $row['kaporamakpath'];

@@ -233,7 +233,7 @@ if (!$conn) {
 
 
   
-     if ($result = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkno'")) {
+     if ($result = $conn -> query("SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkno'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
   $cronjobiptalkapora=$row['cronjobiptalkapora'];

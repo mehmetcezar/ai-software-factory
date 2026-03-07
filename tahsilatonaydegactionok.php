@@ -206,7 +206,7 @@ if (!$conn) {
 
     
 
-     if ($result = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkno'")) {
+     if ($result = $conn -> query("SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkno'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
       
@@ -217,7 +217,7 @@ if (!$conn) {
   $result -> free_result();
 }  
     
-         if ($result = $conn -> query("SELECT * FROM tahsilat where id='$tahsilatid'")) {
+         if ($result = $conn -> query("SELECT * FROM tahsilat where  tahsilat.company_id = '{$_SESSION['company_id']}' AND id='$tahsilatid'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
       $yetkilionay=$row['yetkilionay'];
@@ -303,7 +303,7 @@ $kaporabelgepaths = mysqli_real_escape_string($conn, $kaporabelgepaths);
 $tahsilatnotdb = mysqli_real_escape_string($conn, $tahsilatnotdb);     
         
         
-      $sql = "INSERT INTO kiratahakkukgelir (id, insertdate, tahtarih, mulkno, yapino, kiralamakey, gelirkaynagi, miktar, stgmiktar, parabirimi, tahsilattlrate, tahsilattotlrate,username,lastgunusername, belgepaths, tahsilatnot) VALUES ('', '$date','$tahsilattarihidb','$mulkno', '$yapino','$kiralamakey','$gelirkaynagi','$kaporaMiktardb','$kaporaSterlingdb','$kaporaPBdb','$kaporaTlRatedb','$kaporaToTlRatedb','$basusername','$gunusername','$kaporabelgepaths','$tahsilatnotdb')";  
+      $sql = "INSERT INTO kiratahakkukgelir (id, insertdate, tahtarih, mulkno, yapino, kiralamakey, gelirkaynagi, miktar, stgmiktar, parabirimi, tahsilattlrate, tahsilattotlrate,username,lastgunusername, belgepaths, tahsilatnot, company_id) VALUES ('', '$date','$tahsilattarihidb','$mulkno', '$yapino','$kiralamakey','$gelirkaynagi','$kaporaMiktardb','$kaporaSterlingdb','$kaporaPBdb','$kaporaTlRatedb','$kaporaToTlRatedb','$basusername','$gunusername','$kaporabelgepaths','$tahsilatnotdb', '{$_SESSION['company_id']}')";  
         
     }
     if($tahsilatTurleriArr[$i]=="AİDAT")
@@ -339,7 +339,7 @@ $kaporabelgepaths = mysqli_real_escape_string($conn, $kaporabelgepaths);
 $tahsilatnotdb = mysqli_real_escape_string($conn, $tahsilatnotdb);   
         
         
-      $sql = "INSERT INTO aidattahakkukgelir (id, insertdate, tahtarih, mulkno, yapino, kiralamakey, gelirkaynagi, miktar, stgmiktar, parabirimi, tahsilattlrate, tahsilattotlrate,username,lastgunusername, belgepaths, tahsilatnot) VALUES ('', '$date','$tahsilattarihidb','$mulkno', '$yapino','$kiralamakey','$gelirkaynagi','$kaporaMiktardb','$kaporaSterlingdb','$kaporaPBdb','$kaporaTlRatedb','$kaporaToTlRatedb','$basusername','$gunusername','$kaporabelgepaths','$tahsilatnotdb')";
+      $sql = "INSERT INTO aidattahakkukgelir (id, insertdate, tahtarih, mulkno, yapino, kiralamakey, gelirkaynagi, miktar, stgmiktar, parabirimi, tahsilattlrate, tahsilattotlrate,username,lastgunusername, belgepaths, tahsilatnot, company_id) VALUES ('', '$date','$tahsilattarihidb','$mulkno', '$yapino','$kiralamakey','$gelirkaynagi','$kaporaMiktardb','$kaporaSterlingdb','$kaporaPBdb','$kaporaTlRatedb','$kaporaToTlRatedb','$basusername','$gunusername','$kaporabelgepaths','$tahsilatnotdb', '{$_SESSION['company_id']}')";
         
         
     }
@@ -373,7 +373,7 @@ $gunusername = mysqli_real_escape_string($conn, $gunusername);
 $kaporabelgepaths = mysqli_real_escape_string($conn, $kaporabelgepaths);
 $tahsilatnotdb = mysqli_real_escape_string($conn, $tahsilatnotdb); 
         
-      $sql = "INSERT INTO depozittahakkukgelir (id, insertdate, tahtarih, mulkno, yapino, kiralamakey, gelirkaynagi, miktar, stgmiktar, parabirimi, tahsilattlrate, tahsilattotlrate,username,lastgunusername, belgepaths, tahsilatnot) VALUES ('', '$date','$tahsilattarihidb','$mulkno', '$yapino','$kiralamakey','$gelirkaynagi','$kaporaMiktardb','$kaporaSterlingdb','$kaporaPBdb','$kaporaTlRatedb','$kaporaToTlRatedb','$basusername','$gunusername','$kaporabelgepaths','$tahsilatnotdb')";  
+      $sql = "INSERT INTO depozittahakkukgelir (id, insertdate, tahtarih, mulkno, yapino, kiralamakey, gelirkaynagi, miktar, stgmiktar, parabirimi, tahsilattlrate, tahsilattotlrate,username,lastgunusername, belgepaths, tahsilatnot, company_id) VALUES ('', '$date','$tahsilattarihidb','$mulkno', '$yapino','$kiralamakey','$gelirkaynagi','$kaporaMiktardb','$kaporaSterlingdb','$kaporaPBdb','$kaporaTlRatedb','$kaporaToTlRatedb','$basusername','$gunusername','$kaporabelgepaths','$tahsilatnotdb', '{$_SESSION['company_id']}')";  
         
         
     }
@@ -441,7 +441,7 @@ $gunusername = mysqli_real_escape_string($conn, $gunusername);
 $kaporabelgepaths = mysqli_real_escape_string($conn, $kaporabelgepaths);
 $tahsilatnotdb = mysqli_real_escape_string($conn, $tahsilatnotdb); 
         
-      $sql = "INSERT INTO sutahakkukgelir (id, insertdate, tahtarih, mulkno, yapino, kiralamakey, gelirkaynagi, miktar, stgmiktar, parabirimi, tahsilattlrate, tahsilattotlrate,username,lastgunusername, belgepaths, tahsilatnot) VALUES ('', '$date','$tahsilattarihidb','$mulkno', '$yapino','$kiralamakey','$gelirkaynagi','$kaporaMiktardb','$kaporaSterlingdb','$kaporaPBdb','$kaporaTlRatedb','$kaporaToTlRatedb','$basusername','$gunusername','$kaporabelgepaths','$tahsilatnotdb')"; 
+      $sql = "INSERT INTO sutahakkukgelir (id, insertdate, tahtarih, mulkno, yapino, kiralamakey, gelirkaynagi, miktar, stgmiktar, parabirimi, tahsilattlrate, tahsilattotlrate,username,lastgunusername, belgepaths, tahsilatnot, company_id) VALUES ('', '$date','$tahsilattarihidb','$mulkno', '$yapino','$kiralamakey','$gelirkaynagi','$kaporaMiktardb','$kaporaSterlingdb','$kaporaPBdb','$kaporaTlRatedb','$kaporaToTlRatedb','$basusername','$gunusername','$kaporabelgepaths','$tahsilatnotdb', '{$_SESSION['company_id']}')"; 
         
         
     }

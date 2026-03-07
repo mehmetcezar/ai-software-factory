@@ -133,7 +133,7 @@ if (!$conn) {
 }
 //echo "Connected successfully";
 
-    if ($result = $conn -> query("SELECT * FROM acente WHERE acente.id='$buserid'")) {
+    if ($result = $conn -> query("SELECT * FROM acente WHERE  acente.company_id = '{$_SESSION['company_id']}' AND acente.id='$buserid'")) {
 
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 

@@ -287,7 +287,7 @@ if (!$conn) {
      
    
     
-   $empSQL = "SELECT * FROM mulkkayit where mulkkayit.isdeleted!=1 AND id='$mulkno'";  
+   $empSQL = "SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted!=1 AND id='$mulkno'";  
 	$empResult = mysqli_query($conn, $empSQL);	
 	
         ?>	

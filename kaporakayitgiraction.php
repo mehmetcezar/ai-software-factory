@@ -618,7 +618,7 @@ if (!$conn) {
     $mulkkapalimi=0;
     $kiraison=0;
    // $satisison=0;
-     if ($result = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkno'")) {
+     if ($result = $conn -> query("SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkno'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
      /* if($row['satildi']==1){
@@ -692,7 +692,7 @@ $tarih2 = new DateTime($kaporateslimtarihi);
     
     
   
-         if ($result = $conn -> query("SELECT * FROM yapikayit where yapikayit.isdeleted !=1 AND yapikayit.mulkid='$mulkno'")) {
+         if ($result = $conn -> query("SELECT * FROM yapikayit where  yapikayit.company_id = '{$_SESSION['company_id']}' AND yapikayit.isdeleted !=1 AND yapikayit.mulkid='$mulkno'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
      $bolge=$row['ilce'];
@@ -932,7 +932,7 @@ $kaporaidtekil = generateUniqueRandomString();// BAŞVURU TEKİLLİĞİNİ SAĞL
          $sql = "INSERT INTO satiskaporakayit (id, date, username, adsoyad, iletisim1, iletisim2, kimlikno, kimliktipi, email, uyruk, kapozelnot, mulkno, kaporamiktari, kaporaparabirimi, kaporateslimtarihi, kaporasatisbelge) VALUES ('', '$date','$uname','$adsoyad','$iletisim1','$iletisim2','$kimlikno','$kimliktipi','$email','$uyruk','$kapozelnot','$mulkno','$kaporamiktari','$kaporaparabirimi','$kaporateslimtarihi','$kaporabelgepaths')"; 
     }*/
     //else{
-     $sql = "INSERT INTO kirakaporakayit (id, kirakey, date, username, ksname,kssurname,acente, adsoyad, iletisim1, iletisim2, kimlikno, kimliktipi, email, uyruk, kapozelnot, mulkno, kaporamiktari,topalkaporamiktari, kaporaparabirimi, kaporateslimtarihi, kaporakirabelge, kirabedeli,kirabedeliparabirimi,kirasuresi,kiraodemebicimi,aidatodemebicimi, toplamkirabedeli, taksitmiktari, depozitobedeli, depozitobedeliparabirimi, odenendepozito, komisyon, komisyonbedeli, komisyonbedeliparabirimi, komisyontahsili, aidat, aidatbedeli, aidatbedeliparabirimi, buayaidat, su, subedeli, subedeliparabirimi, suodemebicimi, hizmet, hizmetbedeli, hizmetbedeliparabirimi, hizmetodemebicimi, internet, internetbedeli, internetbedeliparabirimi, internetodemebicimi) VALUES ('', '$kaporaidtekil','$date','$uname','$ksname','$kssurname','$acente','$adsoyad','$iletisim1','$iletisim2','$kimlikno','$kimliktipi','$email','$uyruk','$kapozelnot','$mulkno','$kaporamiktari','$topalkaporamiktari','$kaporaparabirimi','$kaporateslimtarihi','$kaporabelgepaths','$kirabedeli','$kirabedeliparabirimi','$kirasuresi','$kiraodemebicimi','$aidatodemebicimi','$toplamkirabedeli','$taksitmiktari','$depozitobedeli','$depozitobedeliparabirimi','$odenendepozito','$komisyon','$komisyonbedeli','$komisyonbedeliparabirimi','$komisyontahsili', '$aidat','$aidatbedeli','$aidatbedeliparabirimi','$buayaidat','$su','$subedeli','$subedeliparabirimi','$suodemebicimi','$hizmet','$hizmetbedeli','$hizmetbedeliparabirimi','$hizmetodemebicimi','$internet','$internetbedeli','$internetbedeliparabirimi','$internetodemebicimi')"; 
+     $sql = "INSERT INTO kirakaporakayit (id, kirakey, date, username, ksname,kssurname,acente, adsoyad, iletisim1, iletisim2, kimlikno, kimliktipi, email, uyruk, kapozelnot, mulkno, kaporamiktari,topalkaporamiktari, kaporaparabirimi, kaporateslimtarihi, kaporakirabelge, kirabedeli,kirabedeliparabirimi,kirasuresi,kiraodemebicimi,aidatodemebicimi, toplamkirabedeli, taksitmiktari, depozitobedeli, depozitobedeliparabirimi, odenendepozito, komisyon, komisyonbedeli, komisyonbedeliparabirimi, komisyontahsili, aidat, aidatbedeli, aidatbedeliparabirimi, buayaidat, su, subedeli, subedeliparabirimi, suodemebicimi, hizmet, hizmetbedeli, hizmetbedeliparabirimi, hizmetodemebicimi, internet, internetbedeli, internetbedeliparabirimi, internetodemebicimi, company_id) VALUES ('', '$kaporaidtekil','$date','$uname','$ksname','$kssurname','$acente','$adsoyad','$iletisim1','$iletisim2','$kimlikno','$kimliktipi','$email','$uyruk','$kapozelnot','$mulkno','$kaporamiktari','$topalkaporamiktari','$kaporaparabirimi','$kaporateslimtarihi','$kaporabelgepaths','$kirabedeli','$kirabedeliparabirimi','$kirasuresi','$kiraodemebicimi','$aidatodemebicimi','$toplamkirabedeli','$taksitmiktari','$depozitobedeli','$depozitobedeliparabirimi','$odenendepozito','$komisyon','$komisyonbedeli','$komisyonbedeliparabirimi','$komisyontahsili', '$aidat','$aidatbedeli','$aidatbedeliparabirimi','$buayaidat','$su','$subedeli','$subedeliparabirimi','$suodemebicimi','$hizmet','$hizmetbedeli','$hizmetbedeliparabirimi','$hizmetodemebicimi','$internet','$internetbedeli','$internetbedeliparabirimi','$internetodemebicimi', '{$_SESSION['company_id']}')"; 
    // }
     
     

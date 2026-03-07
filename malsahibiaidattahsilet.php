@@ -289,7 +289,7 @@ $lastDay = getLastDayOfYear($currentYear);
             $preyapiid=[];
             $adtsurmal="MALSAHİBİ";
             //echo $mulknoss."<br>";
-if ($result343y = $conn -> query("SELECT * FROM aidattahakkukborc where aidattahakkukborc.aidatsurekliligi='$adtsur' AND aidattahakkukborc.kimborclandirildi='$adtsurmal'")) {
+if ($result343y = $conn -> query("SELECT * FROM aidattahakkukborc where  aidattahakkukborc.company_id = '{$_SESSION['company_id']}' AND aidattahakkukborc.aidatsurekliligi='$adtsur' AND aidattahakkukborc.kimborclandirildi='$adtsurmal'")) {
     
   while ($row343y = $result343y -> fetch_array(MYSQLI_ASSOC)) {
     $premulkid[$o]=$row343y['mulkno']; 
@@ -302,7 +302,7 @@ $result343y -> free_result();
    //preeeee end   
  $check=0;
 
-       $empSQL = "SELECT * FROM mulkkayit where mulkkayit.isdeleted!=1 AND siteadi='$siteadi' AND aidatsurekliligi='EVET'";
+       $empSQL = "SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted!=1 AND siteadi='$siteadi' AND aidatsurekliligi='EVET'";
      
 	$empResult = mysqli_query($conn, $empSQL);	
 	
@@ -339,7 +339,7 @@ $result343y -> free_result();
             
 
  $mulknox=$emp['id'];           
-             if ($result2y = $conn -> query("SELECT * FROM yapikayit where yapikayit.isdeleted !=1 AND yapikayit.mulkid='$mulknox'")) {
+             if ($result2y = $conn -> query("SELECT * FROM yapikayit where  yapikayit.company_id = '{$_SESSION['company_id']}' AND yapikayit.isdeleted !=1 AND yapikayit.mulkid='$mulknox'")) {
   while ($row2y = $result2y -> fetch_array(MYSQLI_ASSOC)) {
       $blokno=$row2y['blok'];
       $daireno=$row2y['kapino'];
@@ -353,7 +353,7 @@ $result343y -> free_result();
        
             
    $controltahsilatguncelle=0;
-    if ($result8y = $conn -> query("SELECT * FROM tahsilat where kiralamakey='$kiralamakey' AND yetkilionay=1 AND guncellemegonderildi=1")) {
+    if ($result8y = $conn -> query("SELECT * FROM tahsilat where  tahsilat.company_id = '{$_SESSION['company_id']}' AND kiralamakey='$kiralamakey' AND yetkilionay=1 AND guncellemegonderildi=1")) {
   while ($row8y = $result8y -> fetch_array(MYSQLI_ASSOC)) {
        $controltahsilatguncelle=$row8y['guncellemegonderildi'];
        $tahsilatid=$row8y['id'];
@@ -412,7 +412,7 @@ $result343y -> free_result();
             $adtsur="EVET";
             $adtsurmal="MALSAHİBİ";
             //echo $mulknoss."<br>";
-if ($result3y = $conn -> query("SELECT * FROM aidattahakkukborc where aidattahakkukborc.aidatsurekliligi='$adtsur' AND aidattahakkukborc.kimborclandirildi='$adtsurmal' AND aidattahakkukborc.mulkno='$mulknoss'")) {
+if ($result3y = $conn -> query("SELECT * FROM aidattahakkukborc where  aidattahakkukborc.company_id = '{$_SESSION['company_id']}' AND aidattahakkukborc.aidatsurekliligi='$adtsur' AND aidattahakkukborc.kimborclandirildi='$adtsurmal' AND aidattahakkukborc.mulkno='$mulknoss'")) {
     
   while ($row3y = $result3y -> fetch_array(MYSQLI_ASSOC)) {
       $check=1;
@@ -459,7 +459,7 @@ if ($result3y = $conn -> query("SELECT * FROM aidattahakkukborc where aidattahak
       
       
       
-    if ($result7y = $conn -> query("SELECT * FROM aidattahakkukgelir where gelirkaynagi='MALSAHIBI' AND mulkno='$mulknoss'")) {
+    if ($result7y = $conn -> query("SELECT * FROM aidattahakkukgelir where  aidattahakkukgelir.company_id = '{$_SESSION['company_id']}' AND gelirkaynagi='MALSAHIBI' AND mulkno='$mulknoss'")) {
         
     //AND tahtarih BETWEEN '$firstdayfor' AND '$lastdayfor'
   while ($row7y = $result7y -> fetch_array(MYSQLI_ASSOC)) {

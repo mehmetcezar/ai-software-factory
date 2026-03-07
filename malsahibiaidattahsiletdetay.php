@@ -209,7 +209,7 @@ if (!$conn) {
     
   
     
-if ($result = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkno'")) {
+if ($result = $conn -> query("SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkno'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
         $yapino = $row['yapino'];
@@ -220,7 +220,7 @@ if ($result = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted 
 }     
     
     
-if ($result = $conn -> query("SELECT * FROM yapikayit where yapikayit.isdeleted !=1 AND yapikayit.id='$yapino'")) {
+if ($result = $conn -> query("SELECT * FROM yapikayit where  yapikayit.company_id = '{$_SESSION['company_id']}' AND yapikayit.isdeleted !=1 AND yapikayit.id='$yapino'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
        
         $projeadi = $row['projeadi'];
@@ -358,7 +358,7 @@ if ($result = $conn -> query("SELECT * FROM yapikayit where yapikayit.isdeleted 
            
     <?php       
            
-         $empSQL = "SELECT * FROM mulkkayit where mulkkayit.isdeleted!=1 AND id='$mulkno'";
+         $empSQL = "SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted!=1 AND id='$mulkno'";
      
 	$empResult = mysqli_query($conn, $empSQL);	
 	
@@ -395,7 +395,7 @@ if ($result = $conn -> query("SELECT * FROM yapikayit where yapikayit.isdeleted 
             
 
  $mulknox=$emp['id'];           
-             if ($result2y = $conn -> query("SELECT * FROM yapikayit where yapikayit.isdeleted !=1 AND yapikayit.mulkid='$mulknox'")) {
+             if ($result2y = $conn -> query("SELECT * FROM yapikayit where  yapikayit.company_id = '{$_SESSION['company_id']}' AND yapikayit.isdeleted !=1 AND yapikayit.mulkid='$mulknox'")) {
   while ($row2y = $result2y -> fetch_array(MYSQLI_ASSOC)) {
       $blokno=$row2y['blok'];
       $daireno=$row2y['kapino'];
@@ -462,7 +462,7 @@ if ($result = $conn -> query("SELECT * FROM yapikayit where yapikayit.isdeleted 
     $j=0; 
         $adtsur="EVET";
             $adtsurmal="MALSAHİBİ";
-if ($result3y = $conn -> query("SELECT * FROM aidattahakkukborc where  aidattahakkukborc.aidatsurekliligi='$adtsur' AND aidattahakkukborc.kimborclandirildi='$adtsurmal' AND aidattahakkukborc.mulkno='$mulkno'")) {
+if ($result3y = $conn -> query("SELECT * FROM aidattahakkukborc where   aidattahakkukborc.company_id = '{$_SESSION['company_id']}' AND aidattahakkukborc.aidatsurekliligi='$adtsur' AND aidattahakkukborc.kimborclandirildi='$adtsurmal' AND aidattahakkukborc.mulkno='$mulkno'")) {
   while ($row3y = $result3y -> fetch_array(MYSQLI_ASSOC)) {
       $j++;
    
@@ -528,7 +528,7 @@ if ($result3y = $conn -> query("SELECT * FROM aidattahakkukborc where  aidattaha
             
               $i=2;
                 $j=0;   
-if ($result4y = $conn -> query("SELECT * FROM aidattahakkukgelir where gelirkaynagi='MALSAHIBI' AND aidattahakkukgelir.mulkno='$mulkno'")) {
+if ($result4y = $conn -> query("SELECT * FROM aidattahakkukgelir where  aidattahakkukgelir.company_id = '{$_SESSION['company_id']}' AND gelirkaynagi='MALSAHIBI' AND aidattahakkukgelir.mulkno='$mulkno'")) {
   while ($row4y = $result4y -> fetch_array(MYSQLI_ASSOC)) {
       $j++;
    

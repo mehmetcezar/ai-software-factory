@@ -130,7 +130,7 @@ if (!$conn) {
 }
 //echo "Connected successfully";
 
-    if ($result = $conn -> query("SELECT * FROM users WHERE users.id='$buserid'")) {
+    if ($result = $conn -> query("SELECT * FROM users WHERE  users.company_id = '{$_SESSION['company_id']}' AND users.id='$buserid'")) {
   //echo "Returned rows are: " . $result -> num_rows;
   // Free result set
   //$date=date('Y-m-d');

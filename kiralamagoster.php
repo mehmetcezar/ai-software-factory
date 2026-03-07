@@ -234,7 +234,7 @@ if (!$conn) {
 //echo "Connected successfully";
 
 $kirakaporasonkey="";
-if ($result = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulknoid'")) {
+if ($result = $conn -> query("SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulknoid'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
         $adsoyad=$row['adsoyad'];
         $iletisim1 = $row['iletisim1'];
@@ -272,7 +272,7 @@ if ($result = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted 
     
 
     
-if ($result = $conn -> query("SELECT * FROM yapikayit where yapikayit.isdeleted !=1 AND yapikayit.id='$yapino'")) {
+if ($result = $conn -> query("SELECT * FROM yapikayit where  yapikayit.company_id = '{$_SESSION['company_id']}' AND yapikayit.isdeleted !=1 AND yapikayit.id='$yapino'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
         $ulke=$row['ulke'];
         $ilce = $row['ilce'];
@@ -300,7 +300,7 @@ if ($result = $conn -> query("SELECT * FROM yapikayit where yapikayit.isdeleted 
   
 
 if($kirakaporaeklendi==1){    
-if ($result = $conn -> query("SELECT * FROM kirakaporakayit where kirakaporakayit.isdeleted !=1 AND kirakaporakayit.kirakey='$kirakaporasonkey'")) {
+if ($result = $conn -> query("SELECT * FROM kirakaporakayit where  kirakaporakayit.company_id = '{$_SESSION['company_id']}' AND kirakaporakayit.isdeleted !=1 AND kirakaporakayit.kirakey='$kirakaporasonkey'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
         $kaporaid=$row['id'];
         $adsoyadkap=$row['adsoyad'];
@@ -325,7 +325,7 @@ if ($result = $conn -> query("SELECT * FROM kirakaporakayit where kirakaporakayi
 }  
 }
     
-if ($result = $conn -> query("SELECT * FROM kiralamakayit where kiralamakayit.isdeleted !=1 AND kiralamakayit.kiralamakey='$kirakaporasonkey'")) {
+if ($result = $conn -> query("SELECT * FROM kiralamakayit where  kiralamakayit.company_id = '{$_SESSION['company_id']}' AND kiralamakayit.isdeleted !=1 AND kiralamakayit.kiralamakey='$kirakaporasonkey'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
         $kiralamaid=$row['id'];
         $stopajvergisi=$row['stopajvergisi'];

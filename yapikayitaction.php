@@ -341,9 +341,9 @@ if (!$conn) {
     
     
     
-     /*$sql = "INSERT INTO yapikayit (id, date, username, ulke, ilce, mahalle, sokak, projeadi, siteadi, blok, kat, kapino, mulktip1, mulktip2, postakodu, cephe, alan, salonadet, odaadet, banyoadet, yapino) VALUES ('', '$date','$uname','$ulke','$ilce','$mahalle','$sokak','$projeadi','$siteadi','$blok','$kat','$kapino','$mulktip1','$mulktip2', '$postakodu', '$cephe', '$alan', '$salonadet', '$odaadet', '$banyoadet', '$getid')";*/
+     /*$sql = "INSERT INTO yapikayit (id, date, username, ulke, ilce, mahalle, sokak, projeadi, siteadi, blok, kat, kapino, mulktip1, mulktip2, postakodu, cephe, alan, salonadet, odaadet, banyoadet, yapino, company_id) VALUES ('', '$date','$uname','$ulke','$ilce','$mahalle','$sokak','$projeadi','$siteadi','$blok','$kat','$kapino','$mulktip1','$mulktip2', '$postakodu', '$cephe', '$alan', '$salonadet', '$odaadet', '$banyoadet', '$getid', '{$_SESSION['company_id']}')";*/
     
-    $sql = "INSERT INTO yapikayit (id, date, username, ulke, ilce, mahalle, sokak, projeadi, siteadi, blok, kat, kapino, mulktip1, postakodu, cephe, alan, salonadet, odaadet, banyoadet,yonetimsozlesmesi, yapino) VALUES ('', '$date','$uname','$ulke','$ilce','$mahalle','$sokak','$projeadi','$siteadi','$blok','$kat','$kapino','$mulktip1', '$postakodu', '$cephe', '$alan', '$salonadet', '$odaadet', '$banyoadet','$yonetimsozlesmesi', '$getid')";
+    $sql = "INSERT INTO yapikayit (id, date, username, ulke, ilce, mahalle, sokak, projeadi, siteadi, blok, kat, kapino, mulktip1, postakodu, cephe, alan, salonadet, odaadet, banyoadet,yonetimsozlesmesi, yapino, company_id) VALUES ('', '$date','$uname','$ulke','$ilce','$mahalle','$sokak','$projeadi','$siteadi','$blok','$kat','$kapino','$mulktip1', '$postakodu', '$cephe', '$alan', '$salonadet', '$odaadet', '$banyoadet','$yonetimsozlesmesi', '$getid', '{$_SESSION['company_id']}')";
     
     if ($conn->query($sql) === TRUE) {
        echo "<br>";

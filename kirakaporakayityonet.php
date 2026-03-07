@@ -131,7 +131,7 @@ exit();
        
 	//$empSQL = "SELECT * FROM labproje where labproje.ispassived !=1 AND musterikayitid='$musterikayitid'";
       
-    $empSQL = "SELECT * FROM kirakaporakayit where kirakaporakayit.isdeleted!=1";  
+    $empSQL = "SELECT * FROM kirakaporakayit where  kirakaporakayit.company_id = '{$_SESSION['company_id']}' AND kirakaporakayit.isdeleted!=1";  
 	$empResult = mysqli_query($conn, $empSQL);	
       $kultipimevcut="";
 	

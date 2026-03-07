@@ -230,7 +230,7 @@ if (!$conn) {
     
 
     
-         if ($result = $conn -> query("SELECT * FROM kiralamakayit where kiralamakayit.isdeleted !=1 AND kiralamakayit.kiralamakey='$kirakaporasonkey' AND kiralamakayit.status='KIRADA'")) {
+         if ($result = $conn -> query("SELECT * FROM kiralamakayit where  kiralamakayit.company_id = '{$_SESSION['company_id']}' AND kiralamakayit.isdeleted !=1 AND kiralamakayit.kiralamakey='$kirakaporasonkey' AND kiralamakayit.status='KIRADA'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
        
         $full_path = $row['yonetimsozpdfpath'];

@@ -226,7 +226,7 @@ if (!$conn) {
     
  
  
-     if ($result = $conn -> query("SELECT * FROM tahsilat where tahsilat.id='$tahsilatid'")) {
+     if ($result = $conn -> query("SELECT * FROM tahsilat where  tahsilat.company_id = '{$_SESSION['company_id']}' AND tahsilat.id='$tahsilatid'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
       

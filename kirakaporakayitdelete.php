@@ -140,7 +140,7 @@ if (!$conn) {
 //echo "Connected successfully";
     $kirakaporaeklendi=0;
     $kiralandi=0;  
-     if ($result = $conn -> query("SELECT * FROM mulkkayit WHERE mulkkayit.id='$mulknoid'")) {
+     if ($result = $conn -> query("SELECT * FROM mulkkayit WHERE  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.id='$mulknoid'")) {
  
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
            $kirakaporaeklendi=$row['kirakaporaeklendi'];
@@ -188,7 +188,7 @@ if (!$conn) {
   } 
     
     
- if ($result = $conn -> query("SELECT * FROM mulkkayit WHERE mulkkayit.id='$mulknoid'")) {
+ if ($result = $conn -> query("SELECT * FROM mulkkayit WHERE  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.id='$mulknoid'")) {
  
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
            $yapino=$row['yapino'];

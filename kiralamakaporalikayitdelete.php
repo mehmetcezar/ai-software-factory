@@ -143,7 +143,7 @@ if (!$conn) {
     $kiralandi=0;
     $satisaayrildi=0;
     $satildi=0;   
-     if ($result = $conn -> query("SELECT * FROM mulkkayit WHERE mulkkayit.id='$mulknoid'")) {
+     if ($result = $conn -> query("SELECT * FROM mulkkayit WHERE  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.id='$mulknoid'")) {
  
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
            $satildi=$row['satildi'];
@@ -170,7 +170,7 @@ if (!$conn) {
   } 
     
     
- if ($result = $conn -> query("SELECT * FROM kiralamakayit WHERE kiralamakayit.id='$buserid'")) {
+ if ($result = $conn -> query("SELECT * FROM kiralamakayit WHERE  kiralamakayit.company_id = '{$_SESSION['company_id']}' AND kiralamakayit.id='$buserid'")) {
  
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
            $mulkno=$row['mulkno'];

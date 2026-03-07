@@ -400,7 +400,7 @@ if (!$conn) {
 
 
     $mulkison=0;
-     if ($result = $conn -> query("SELECT * FROM yapikayit where yapikayit.isdeleted !=1 AND yapikayit.yapino='$yapinoid'")) {
+     if ($result = $conn -> query("SELECT * FROM yapikayit where  yapikayit.company_id = '{$_SESSION['company_id']}' AND yapikayit.isdeleted !=1 AND yapikayit.yapino='$yapinoid'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
       if($row['mulkison']==1)
@@ -465,14 +465,14 @@ if (!$conn) {
 
      $status="UYGUN";
    
-     $sql = "INSERT INTO mulkkayit (id, date, username, adsoyad, iletisim1, iletisim2, kimlikno, email, uyruk, msozelnot, kirabedeli, kirabedeliparabirimi, guncelaidat, aidatparabirimi, maxkirainoran, susahiplik, elektriksahiplik, mulkozelnot,aidatsurekliligi, yapino, kiralamadurumu, siteadi, status) VALUES ('', '$date','$uname','$adsoyad','$iletisim1','$iletisim2','$kimlikno','$email','$uyruk','$msozelnot','$kirabedeli','$kirabedeliparabirimi','$guncelaidat','$aidatparabirimi','$maxkirainoran','$susahiplik','$elektriksahiplik','$mulkozelnot','$aidatsurekliligi','$yapino', '$kiralamadurumu', '$siteadix','$status')"; 
+     $sql = "INSERT INTO mulkkayit (id, date, username, adsoyad, iletisim1, iletisim2, kimlikno, email, uyruk, msozelnot, kirabedeli, kirabedeliparabirimi, guncelaidat, aidatparabirimi, maxkirainoran, susahiplik, elektriksahiplik, mulkozelnot,aidatsurekliligi, yapino, kiralamadurumu, siteadi, status, company_id) VALUES ('', '$date','$uname','$adsoyad','$iletisim1','$iletisim2','$kimlikno','$email','$uyruk','$msozelnot','$kirabedeli','$kirabedeliparabirimi','$guncelaidat','$aidatparabirimi','$maxkirainoran','$susahiplik','$elektriksahiplik','$mulkozelnot','$aidatsurekliligi','$yapino', '$kiralamadurumu', '$siteadix','$status', '{$_SESSION['company_id']}')"; 
   
     
     if ($conn->query($sql) === TRUE) {
        
        
         
-         if ($result = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted !=1 AND mulkkayit.yapino='$yapino'")) {
+         if ($result = $conn -> query("SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted !=1 AND mulkkayit.yapino='$yapino'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
       $mulkyapino=$row['id'];

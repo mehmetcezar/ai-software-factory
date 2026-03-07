@@ -388,7 +388,7 @@ if (!$conn) {
 
 
     $mulkison=0;
-     if ($result = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.id='$mulkid'")) {
+     if ($result = $conn -> query("SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.id='$mulkid'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
     $aktifkocandb = $row['aktifkocan'];

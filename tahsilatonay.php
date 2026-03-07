@@ -199,7 +199,7 @@ exit();
        
 	//$empSQL = "SELECT * FROM labproje where labproje.ispassived !=1 AND musterikayitid='$musterikayitid'";
       
-    $empSQL = "SELECT * FROM tahsilat where yetkilionay=1 AND guncellemegonderildi!=1";  
+    $empSQL = "SELECT * FROM tahsilat where  tahsilat.company_id = '{$_SESSION['company_id']}' AND yetkilionay=1 AND guncellemegonderildi!=1";  
 	$empResult = mysqli_query($conn, $empSQL);	
 	
         ?>	

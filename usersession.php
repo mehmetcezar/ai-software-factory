@@ -78,7 +78,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 //echo "Connected successfully";
-if ($result = $conn -> query("SELECT * FROM users where users.uname='$uname'")) {
+if ($result = $conn -> query("SELECT * FROM users where  users.company_id = '{$_SESSION['company_id']}' AND users.uname='$uname'")) {
   //echo "Returned rows are: " . $result -> num_rows;
   // Free result set
   //$date=date('Y-m-d');
@@ -185,7 +185,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 //echo "Connected successfully";
-if ($result = $conn -> query("SELECT * FROM users where users.uname='$uname'")) {
+if ($result = $conn -> query("SELECT * FROM users where  users.company_id = '{$_SESSION['company_id']}' AND users.uname='$uname'")) {
   //echo "Returned rows are: " . $result -> num_rows;
   // Free result set
   //$date=date('Y-m-d');
@@ -653,4 +653,19 @@ mysqli_close($conn);
 	}
 
 
+
+function getCompanyId($uname){
+    include 'config.php';
+    $conn = mysqli_connect($config['DB_HOST'], $config['DB_USERNAME'], $config['DB_PASSWORD'], $config['DB_DATABASE']);
+    if (!$conn) return 1;
+    
+    $company_id = 1;
+    if ($result = $conn->query("SELECT company_id FROM users WHERE uname='$uname'")) {
+        if ($row = $result->fetch_assoc()) {
+            $company_id = $row['company_id'];
+        }
+    }
+    mysqli_close($conn);
+    return $company_id;
+}
 	?>

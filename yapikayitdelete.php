@@ -130,7 +130,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 //echo "Connected successfully";
-     if ($result = $conn -> query("SELECT * FROM yapikayit WHERE yapikayit.id='$buserid'")) {
+     if ($result = $conn -> query("SELECT * FROM yapikayit WHERE  yapikayit.company_id = '{$_SESSION['company_id']}' AND yapikayit.id='$buserid'")) {
  
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
            $mulkison=$row['mulkison'];
@@ -146,7 +146,7 @@ if (!$conn) {
   }  
     
     
- if ($result = $conn -> query("SELECT * FROM yapikayit WHERE yapikayit.id='$buserid'")) {
+ if ($result = $conn -> query("SELECT * FROM yapikayit WHERE  yapikayit.company_id = '{$_SESSION['company_id']}' AND yapikayit.id='$buserid'")) {
  
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
            $yapino=$row['yapino'];

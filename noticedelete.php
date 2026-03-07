@@ -234,7 +234,7 @@ $datetime2 = new DateTime($kirabitistarihi);
 $noticetarihigoster = $datetime->format('d-m-Y');    
 $kirabitistarihigoster = $datetime2->format('d-m-Y');    
     
- if ($result = $conn -> query("SELECT * FROM mulkkayit WHERE mulkkayit.id='$mulknoid'")) {
+ if ($result = $conn -> query("SELECT * FROM mulkkayit WHERE  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.id='$mulknoid'")) {
  
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
            $yapino=$row['yapino'];

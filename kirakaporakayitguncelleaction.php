@@ -344,7 +344,7 @@ if (!$conn) {
     $satildiison=0;
     $kiraison=0;
     //$satisison=0;
-     if ($result = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkno'")) {
+     if ($result = $conn -> query("SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkno'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
       if($row['satildi']==1){
@@ -383,7 +383,7 @@ if (!$conn) {
    exit();
 } 
     
-         if ($result = $conn -> query("SELECT * FROM yapikayit where yapikayit.isdeleted !=1 AND yapikayit.mulkid='$mulkno'")) {
+         if ($result = $conn -> query("SELECT * FROM yapikayit where  yapikayit.company_id = '{$_SESSION['company_id']}' AND yapikayit.isdeleted !=1 AND yapikayit.mulkid='$mulkno'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
      $bolge=$row['ilce'];
@@ -542,7 +542,7 @@ for( $i=0 ; $i < $total_count ; $i++ ) {
  $sql = "UPDATE kirakaporakayit SET adsoyad='$adsoyad',iletisim1='$iletisim1', iletisim2='$iletisim2', kimlikno='$kimlikno', kimliktipi='$kimliktipi', email='$email', uyruk='$uyruk', kapozelnot='$kapozelnot', kaporamiktari='$kaporamiktari', kaporaparabirimi='$kaporaparabirimi', kaporateslimtarihi='$kaporateslimtarihi', kaporakirabelge='$kaporabelgepaths' WHERE id='$kaporaidx'";
         
         
-    /* $sql = "INSERT INTO kirakaporakayit (id, date, username, adsoyad, iletisim1, iletisim2, kimlikno, kimliktipi, email, uyruk, kapozelnot, mulkno, kaporamiktari, kaporaparabirimi, kaporateslimtarihi, kaporakirabelge) VALUES ('', '$date','$uname','$adsoyad','$iletisim1','$iletisim2','$kimlikno','$kimliktipi','$email','$uyruk','$kapozelnot','$mulkno','$kaporamiktari','$kaporaparabirimi','$kaporateslimtarihi','$kaporabelgepaths')"; */
+    /* $sql = "INSERT INTO kirakaporakayit (id, date, username, adsoyad, iletisim1, iletisim2, kimlikno, kimliktipi, email, uyruk, kapozelnot, mulkno, kaporamiktari, kaporaparabirimi, kaporateslimtarihi, kaporakirabelge, company_id) VALUES ('', '$date','$uname','$adsoyad','$iletisim1','$iletisim2','$kimlikno','$kimliktipi','$email','$uyruk','$kapozelnot','$mulkno','$kaporamiktari','$kaporaparabirimi','$kaporateslimtarihi','$kaporabelgepaths', '{$_SESSION['company_id']}')"; */
     }
     
     if ($conn->query($sql) === TRUE) {

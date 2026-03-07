@@ -218,7 +218,7 @@ if (!$conn) {
 
 
     
-     if ($result = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted !=1 AND mulkkayit.id='$buserid'")) {
+     if ($result = $conn -> query("SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted !=1 AND mulkkayit.id='$buserid'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
        
         $yapinoid = $row['yapino'];
@@ -253,7 +253,7 @@ if (!$conn) {
     
     
     
-     if ($result = $conn -> query("SELECT * FROM yapikayit where yapikayit.isdeleted !=1 AND yapikayit.yapino='$yapinoid'")) {
+     if ($result = $conn -> query("SELECT * FROM yapikayit where  yapikayit.company_id = '{$_SESSION['company_id']}' AND yapikayit.isdeleted !=1 AND yapikayit.yapino='$yapinoid'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
         $ulke=$row['ulke'];
         $ilce = $row['ilce'];

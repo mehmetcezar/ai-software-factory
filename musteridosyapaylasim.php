@@ -137,7 +137,7 @@ $customer_uname = $_SESSION['uname'];
 
 // Müşteriye paylaşılan dosyalar çekiliyor
 $files = [];
-if ($result = $conn->query("SELECT * FROM files WHERE receiver_uname = '$customer_uname' ORDER BY uploaded_at DESC")) {
+if ($result = $conn->query("SELECT * FROM files WHERE  files.company_id = '{$_SESSION['company_id']}' AND receiver_uname = '$customer_uname' ORDER BY uploaded_at DESC")) {
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
         $files[] = $row;
     }

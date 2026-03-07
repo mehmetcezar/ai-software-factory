@@ -29,9 +29,9 @@ if (!empty($_FILES['files']['name']) && isset($_POST['receiver_uname'])) {
 
             // 📌 Dosya boyutu da ekleniyor
             $conn->query("INSERT INTO files 
-                (sender_uname, receiver_uname, filename, original_name, uploaded_at, size) 
+                (sender_uname, receiver_uname, filename, original_name, uploaded_at, size, company_id) 
                 VALUES 
-                ('$authorized_uname', '$receiver_uname', '$filename', '$original_name', '$now', '$file_size')");
+                ('$authorized_uname', '$receiver_uname', '$filename', '$original_name', '$now', '$file_size', '{$_SESSION['company_id']}')");
         }
     }
 

@@ -249,7 +249,7 @@ if (!$conn) {
 //echo "Connected successfully";
 
 
-if ($result = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkid'")) {
+if ($result = $conn -> query("SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkid'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
         $adsoyad=$row['adsoyad'];
         $iletisim1 = $row['iletisim1'];
@@ -287,7 +287,7 @@ if ($result = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted 
     
 
     
-if ($result = $conn -> query("SELECT * FROM yapikayit where yapikayit.isdeleted !=1 AND yapikayit.id='$yapino'")) {
+if ($result = $conn -> query("SELECT * FROM yapikayit where  yapikayit.company_id = '{$_SESSION['company_id']}' AND yapikayit.isdeleted !=1 AND yapikayit.id='$yapino'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
         $ulke=$row['ulke'];
         $ilce = $row['ilce'];
@@ -315,7 +315,7 @@ if ($result = $conn -> query("SELECT * FROM yapikayit where yapikayit.isdeleted 
   
 
 if($kirakaporaeklendi) {   
-if ($result = $conn -> query("SELECT * FROM kirakaporakayit where kirakaporakayit.isdeleted !=1 AND kirakaporakayit.kirakey='$kirakey'")) {
+if ($result = $conn -> query("SELECT * FROM kirakaporakayit where  kirakaporakayit.company_id = '{$_SESSION['company_id']}' AND kirakaporakayit.isdeleted !=1 AND kirakaporakayit.kirakey='$kirakey'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
         $kaporaid=$row['id'];
         $adsoyadkap=$row['adsoyad'];
@@ -347,7 +347,7 @@ if ($result = $conn -> query("SELECT * FROM kirakaporakayit where kirakaporakayi
    
 
     
-if ($result = $conn -> query("SELECT * FROM tahsilat where id='$tahsilatid'")) {
+if ($result = $conn -> query("SELECT * FROM tahsilat where  tahsilat.company_id = '{$_SESSION['company_id']}' AND id='$tahsilatid'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
    $tahtarihi = $row['tahtarihi'];
 $mulkno = $row['mulkno'];

@@ -202,7 +202,7 @@ if (!$conn) {
     
     
     $mulkison=0;
-     if ($result = $conn -> query("SELECT * FROM yapikayit where yapikayit.isdeleted !=1 AND yapikayit.yapino='$yapinoid'")) {
+     if ($result = $conn -> query("SELECT * FROM yapikayit where  yapikayit.company_id = '{$_SESSION['company_id']}' AND yapikayit.isdeleted !=1 AND yapikayit.yapino='$yapinoid'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 $ulke=$row['ulke'];
         $ilce = $row['ilce'];
@@ -250,7 +250,7 @@ $ulke=$row['ulke'];
     
     
     
-    if ($result = $conn -> query("SELECT * FROM yapikayit where yapikayit.isdeleted !=1")) {
+    if ($result = $conn -> query("SELECT * FROM yapikayit where  yapikayit.company_id = '{$_SESSION['company_id']}' AND yapikayit.isdeleted !=1")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
       $verilermx[]=$row['yapino'].",".$row['ilce'].",".$row['mahalle'].",".$row['sokak'].",".$row['blok'].",".$row['kat'].",".$row['kapino'];

@@ -173,7 +173,7 @@ if (!$conn) {
 }
 //echo "Connected successfully";
 
-    if ($result = $conn -> query("SELECT * FROM yapikayit where yapikayit.isdeleted !=1 AND yapikayit.mulkison=0")) {
+    if ($result = $conn -> query("SELECT * FROM yapikayit where  yapikayit.company_id = '{$_SESSION['company_id']}' AND yapikayit.isdeleted !=1 AND yapikayit.mulkison=0")) {
   //echo "Returned rows are: " . $result -> num_rows;
   // Free result set
   //$date=date('Y-m-d');

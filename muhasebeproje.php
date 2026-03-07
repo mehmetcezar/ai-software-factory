@@ -182,7 +182,7 @@ if (!$conn) {
 }
 //echo "Connected successfully";
 
-    if ($result = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted !=1 AND mulkkayit.kirakaporaeklendi=1 AND kiracieklendi!=1 AND kirayaayrildi!=1 AND kiralandi!=1 AND mulkkayit.satildi!=1" )) {
+    if ($result = $conn -> query("SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted !=1 AND mulkkayit.kirakaporaeklendi=1 AND kiracieklendi!=1 AND kirayaayrildi!=1 AND kiralandi!=1 AND mulkkayit.satildi!=1" )) {
   //echo "Returned rows are: " . $result -> num_rows;
   // Free result set
   //$date=date('Y-m-d');
@@ -228,7 +228,7 @@ if (!$conn) {
     
     
     
-     if ($result = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted !=1 AND mulkkayit.kirakaporaeklendi!=1 AND kiracieklendi!=1 AND kirayaayrildi!=1 AND kiralandi!=1 AND mulkkayit.satildi!=1" )) {
+     if ($result = $conn -> query("SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted !=1 AND mulkkayit.kirakaporaeklendi!=1 AND kiracieklendi!=1 AND kirayaayrildi!=1 AND kiralandi!=1 AND mulkkayit.satildi!=1" )) {
   //echo "Returned rows are: " . $result -> num_rows;
   // Free result set
   //$date=date('Y-m-d');

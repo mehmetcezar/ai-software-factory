@@ -238,7 +238,7 @@ exit();
 /****/            
        $kiradurumux="AÇIK";
 	//$empSQL = "SELECT * FROM labproje where labproje.ispassived !=1 AND musterikayitid='$musterikayitid'";
-       $empSQL = "SELECT * FROM mulkkayit where mulkkayit.isdeleted!=1 AND siteadi='$siteadi' AND mulkkayit.kiralamadurumu='$kiradurumux' AND (mulkkayit.kirakaporaeklendi=1 || mulkkayit.kaporaonayinda=1 || mulkkayit.kaporaonayinda=2 || mulkkayit.kaporaonayinda=3 || mulkkayit.kiracieklendi=1 || mulkkayit.kiralandi=1 || mulkkayit.kiralamaonayinda=1 || mulkkayit.kiralamaguncellemegonderildi=1)";
+       $empSQL = "SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted!=1 AND siteadi='$siteadi' AND mulkkayit.kiralamadurumu='$kiradurumux' AND (mulkkayit.kirakaporaeklendi=1 || mulkkayit.kaporaonayinda=1 || mulkkayit.kaporaonayinda=2 || mulkkayit.kaporaonayinda=3 || mulkkayit.kiracieklendi=1 || mulkkayit.kiralandi=1 || mulkkayit.kiralamaonayinda=1 || mulkkayit.kiralamaguncellemegonderildi=1)";
      
 	$empResult = mysqli_query($conn, $empSQL);	
 	 
@@ -361,7 +361,7 @@ $kirakaporasontarih=$emp['kirakaporasontarih'];
             if($emp['kiralandi']==1){
                $mulknox=$emp['id']; 
                 
-     if ($result2 = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulknox'")) {
+     if ($result2 = $conn -> query("SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulknox'")) {
   while ($row2 = $result2 -> fetch_array(MYSQLI_ASSOC)) {
       $kirabitistarihi=$row2['kirabitistarihi'];
       $noticeverildimi=$row2['noticeverildimi'];
@@ -500,7 +500,7 @@ $kirakaporasontarih=$emp['kirakaporasontarih'];
                         
 $mulknox=$emp['id'];
             //echo $mulknox."<br>";
-             if ($result2y = $conn -> query("SELECT * FROM yapikayit where yapikayit.isdeleted !=1 AND yapikayit.mulkid='$mulknox'")) {
+             if ($result2y = $conn -> query("SELECT * FROM yapikayit where  yapikayit.company_id = '{$_SESSION['company_id']}' AND yapikayit.isdeleted !=1 AND yapikayit.mulkid='$mulknox'")) {
   while ($row2y = $result2y -> fetch_array(MYSQLI_ASSOC)) {
       $blokno=$row2y['blok'];
       $daireno=$row2y['kapino'];
@@ -514,7 +514,7 @@ $mulknox=$emp['id'];
  
             
 $controltahsilatguncelle=0;
-    if ($result3y = $conn -> query("SELECT * FROM tahsilat where kiralamakey='$kiralamakey' AND yetkilionay=1 AND guncellemegonderildi=1")) {
+    if ($result3y = $conn -> query("SELECT * FROM tahsilat where  tahsilat.company_id = '{$_SESSION['company_id']}' AND kiralamakey='$kiralamakey' AND yetkilionay=1 AND guncellemegonderildi=1")) {
   while ($row3y = $result3y -> fetch_array(MYSQLI_ASSOC)) {
        $controltahsilatguncelle=$row3y['guncellemegonderildi'];
        $tahsilatid=$row3y['id'];
@@ -690,7 +690,7 @@ echo   '</div>
        
 	//$empSQL = "SELECT * FROM labproje where labproje.ispassived !=1 AND musterikayitid='$musterikayitid'";
       
-    $empSQL2 = "SELECT * FROM mulkkayit where mulkkayit.isdeleted!=1 AND siteadi='$siteadi' AND kiralamadurumu='$kiradurumux' AND mulkkayit.kirakaporaeklendi!=1 AND mulkkayit.kiracieklendi!=1 AND mulkkayit.kiralandi!=1 AND mulkkayit.kaporaonayinda!=1 AND mulkkayit.kaporaonayinda!=2 AND mulkkayit.kiralamaonayinda!=1 AND mulkkayit.kiralamaonayinda!=2 AND mulkkayit.kiralamaguncellemegonderildi!=1 || (mulkkayit.kiralamadurumu='KAPALI' AND mulkkayit.kirayaactarih!='0000-00-00')";  
+    $empSQL2 = "SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted!=1 AND siteadi='$siteadi' AND kiralamadurumu='$kiradurumux' AND mulkkayit.kirakaporaeklendi!=1 AND mulkkayit.kiracieklendi!=1 AND mulkkayit.kiralandi!=1 AND mulkkayit.kaporaonayinda!=1 AND mulkkayit.kaporaonayinda!=2 AND mulkkayit.kiralamaonayinda!=1 AND mulkkayit.kiralamaonayinda!=2 AND mulkkayit.kiralamaguncellemegonderildi!=1 || (mulkkayit.kiralamadurumu='KAPALI' AND mulkkayit.kirayaactarih!='0000-00-00')";  
 	$empResult2 = mysqli_query($conn, $empSQL2);	
 	
         ?>	
@@ -799,7 +799,7 @@ $kirakaporasontarih2=$emp2['kirakaporasontarih'];
             if($emp2['kiralandi']==1){
                $mulknox2=$emp2['id']; 
                 
-     if ($result22 = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulknox2'")) {
+     if ($result22 = $conn -> query("SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulknox2'")) {
   while ($row22 = $result22 -> fetch_array(MYSQLI_ASSOC)) {
       $kirabitistarihi2=$row22['kirabitistarihi'];
      
@@ -859,7 +859,7 @@ $kirakaporasontarih2=$emp2['kirakaporasontarih'];
                        /****YAPI BİLGİLERİ ALINSIN****/ 
                         
 $mulknox=$emp2['id'];
-             if ($result2y = $conn -> query("SELECT * FROM yapikayit where yapikayit.isdeleted !=1 AND yapikayit.mulkid='$mulknox'")) {
+             if ($result2y = $conn -> query("SELECT * FROM yapikayit where  yapikayit.company_id = '{$_SESSION['company_id']}' AND yapikayit.isdeleted !=1 AND yapikayit.mulkid='$mulknox'")) {
   while ($row2y = $result2y -> fetch_array(MYSQLI_ASSOC)) {
       $blokno=$row2y['blok'];
       $daireno=$row2y['kapino'];

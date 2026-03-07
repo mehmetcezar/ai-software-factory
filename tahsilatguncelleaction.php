@@ -307,7 +307,7 @@ if (!$conn) {
 
 
     $kiralandiison=0;
-     if ($result = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkno'")) {
+     if ($result = $conn -> query("SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkno'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
       if($row['kiralandi']==1){
@@ -319,7 +319,7 @@ if (!$conn) {
   $result -> free_result();
 }  
     
- if ($result = $conn -> query("SELECT * FROM tahsilat where id='$tahsilatid'")) {
+ if ($result = $conn -> query("SELECT * FROM tahsilat where  tahsilat.company_id = '{$_SESSION['company_id']}' AND id='$tahsilatid'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
 $yetkilionay = $row['yetkilionay'];
@@ -544,7 +544,7 @@ for ($i = 0; $i < $total_count; $i++) {
 
      $yetkilionay=1;// 1 olunca yetkili onayına gitti demek, 2 olunca ise yetkili onayladı demek.
 
-  // $sql = "INSERT INTO tahsilat (id, date, tahtarihi, mulkno, yapino, kiralamakey, tahsilatturu, miktar, parabirimi, tahsilattlrate, tahsilattotlrate, belgepaths, tahsilatnot, yetkilionay) VALUES ('', '$date','$tahsilattarihidb','$mulkno', '$yapino','$kaporaid','$tahsilatturudb','$kaporaSterlingdb','$kaporaPBdb','$kaporaTlRatedb','$kaporaToTlRatedb','$kaporabelgepaths','$tahsilatnotdb','$yetkilionay')";
+  // $sql = "INSERT INTO tahsilat (id, date, tahtarihi, mulkno, yapino, kiralamakey, tahsilatturu, miktar, parabirimi, tahsilattlrate, tahsilattotlrate, belgepaths, tahsilatnot, yetkilionay, company_id) VALUES ('', '$date','$tahsilattarihidb','$mulkno', '$yapino','$kaporaid','$tahsilatturudb','$kaporaSterlingdb','$kaporaPBdb','$kaporaTlRatedb','$kaporaToTlRatedb','$kaporabelgepaths','$tahsilatnotdb','$yetkilionay', '{$_SESSION['company_id']}')";
     /*
     echo $kaporaTlRatedb;
     echo "<br>";

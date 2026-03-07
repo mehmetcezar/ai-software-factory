@@ -94,7 +94,7 @@ if (!$connn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 //echo "Connected successfully";
-             if ($result = $connn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted !=1 AND mulkkayit.id='$id'")) {
+             if ($result = $connn -> query("SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted !=1 AND mulkkayit.id='$id'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
         
      
@@ -415,7 +415,7 @@ if (!$connn) {
  // $sql = "UPDATE mulkkayit SET kaporaonayinda=0,kirakaporaeklendi=0,kaporasureonayinda=0,kaporasureuzatmadate='0000-00-00',kirakaporasontarih='0000-00-00',kirakaporasonkey='',kiracieklendi=0,kirabitistarihi=0,noticeverildimi=0,noticetarihi='0000-00-00',kirayaayrildi=0,kirayaayrildisondate='0000-00-00',kirayaayrildisontime='00:00:00',kiralamaonayinda=0,kiralamaguncellemegonderildi=0,kiralandi=0,zararziyangirilmeli=0,zararziyangirildimi=0,kiralamadurumu='AÇIK',status='UYGUN' where mulkkayit.id='$mulkid'";  
    $status="UYGUN";
     
-         if ($result = $connn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkid'")) {
+         if ($result = $connn -> query("SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkid'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
         
      
@@ -939,7 +939,7 @@ if ($result76 = $conn -> query("SELECT id,yapino,guncelaidat,aidatparabirimi,aid
       
     
       if($control55){
-   $sql76 = "INSERT INTO aidattahakkukborc (id, tahtarihi, mulkno, aidatsurekliligi, yapino, kimborclandirildi, miktar, parabirimi) VALUES ('', '$date','$mulkno', '$aidatsurekliligi','$yapino','$kimborclandirildi','$guncelaidat','$aidatparabirimi')"; 
+   $sql76 = "INSERT INTO aidattahakkukborc (id, tahtarihi, mulkno, aidatsurekliligi, yapino, kimborclandirildi, miktar, parabirimi, company_id) VALUES ('', '$date','$mulkno', '$aidatsurekliligi','$yapino','$kimborclandirildi','$guncelaidat','$aidatparabirimi', '{$_SESSION['company_id']}')"; 
   
     
     if ($conn->query($sql76) === TRUE) {
@@ -976,7 +976,7 @@ $suborccount=0;
 $hizmetborccount=0;
 $internetborccount=0;
 $komisyonborccount=0;
- if ($result28 = $conn -> query("SELECT * FROM genelborc where genelborc.tahedilecektarih<='$today' AND genelborc.esasborctablosunayazildi!=1")) { 
+ if ($result28 = $conn -> query("SELECT * FROM genelborc where  genelborc.company_id = '{$_SESSION['company_id']}' AND genelborc.tahedilecektarih<='$today' AND genelborc.esasborctablosunayazildi!=1")) { 
       while ($row28 = $result28 -> fetch_array(MYSQLI_ASSOC)) {
           echo "OK";
      $idgenelborc=$row28['id'];      
@@ -991,7 +991,7 @@ $komisyonborccount=0;
          
     if($borctipi=="KİRA"){
         echo "OK";
-     $sql28 = "INSERT INTO kiratahakkukborc (id, tahtarihi, mulkno, yapino, kiralamakey, kimborclandirildi, miktar, parabirimi) VALUES ('', '$tahedilecektarih','$mulkno','$yapino','$kiralamakey','$kimborclandirildi','$miktar','$parabirimi')"; 
+     $sql28 = "INSERT INTO kiratahakkukborc (id, tahtarihi, mulkno, yapino, kiralamakey, kimborclandirildi, miktar, parabirimi, company_id) VALUES ('', '$tahedilecektarih','$mulkno','$yapino','$kiralamakey','$kimborclandirildi','$miktar','$parabirimi', '{$_SESSION['company_id']}')"; 
         $kiraborccount++;
     } 
           
@@ -1001,18 +1001,18 @@ $komisyonborccount=0;
     } 
           
        if($borctipi=="AİDAT"){
-     $sql28 = "INSERT INTO aidattahakkukborc (id, tahtarihi, mulkno, yapino, kiralamakey, kimborclandirildi, miktar, parabirimi) VALUES ('', '$tahedilecektarih','$mulkno','$yapino','$kiralamakey','$kimborclandirildi','$miktar','$parabirimi')";
+     $sql28 = "INSERT INTO aidattahakkukborc (id, tahtarihi, mulkno, yapino, kiralamakey, kimborclandirildi, miktar, parabirimi, company_id) VALUES ('', '$tahedilecektarih','$mulkno','$yapino','$kiralamakey','$kimborclandirildi','$miktar','$parabirimi', '{$_SESSION['company_id']}')";
            $aidatborccount++;
     }    
       
           
              if($borctipi=="DEPOZİTO"){
-     $sql28 = "INSERT INTO depozittahakkukborc (id, tahtarihi, mulkno, yapino, kiralamakey, kimborclandirildi, miktar, parabirimi) VALUES ('', '$tahedilecektarih','$mulkno','$yapino','$kiralamakey','$kimborclandirildi','$miktar','$parabirimi')";
+     $sql28 = "INSERT INTO depozittahakkukborc (id, tahtarihi, mulkno, yapino, kiralamakey, kimborclandirildi, miktar, parabirimi, company_id) VALUES ('', '$tahedilecektarih','$mulkno','$yapino','$kiralamakey','$kimborclandirildi','$miktar','$parabirimi', '{$_SESSION['company_id']}')";
                  $depozitoborccount++;
     }  
           
                        if($borctipi=="SU"){
-     $sql28 = "INSERT INTO sutahakkukborc (id, tahtarihi, mulkno, yapino, kiralamakey, kimborclandirildi, miktar, parabirimi) VALUES ('', '$tahedilecektarih','$mulkno','$yapino','$kiralamakey','$kimborclandirildi','$miktar','$parabirimi')"; 
+     $sql28 = "INSERT INTO sutahakkukborc (id, tahtarihi, mulkno, yapino, kiralamakey, kimborclandirildi, miktar, parabirimi, company_id) VALUES ('', '$tahedilecektarih','$mulkno','$yapino','$kiralamakey','$kimborclandirildi','$miktar','$parabirimi', '{$_SESSION['company_id']}')"; 
                            $suborccount++;
     }
           

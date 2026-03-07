@@ -31,7 +31,7 @@ function getIcon($filename) {
 if (isset($_GET['receiver_uname'])) {
     //$receiver_uname = $_GET['receiver_uname'];
     $receiver_uname = mysqli_real_escape_string($conn, $_GET['receiver_uname']);
-    $result = $conn->query("SELECT * FROM files WHERE receiver_uname = '$receiver_uname' ORDER BY uploaded_at DESC");
+    $result = $conn->query("SELECT * FROM files WHERE  files.company_id = '{$_SESSION['company_id']}' AND receiver_uname = '$receiver_uname' ORDER BY uploaded_at DESC");
 
     $categories = [];
 

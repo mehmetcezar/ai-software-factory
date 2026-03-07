@@ -284,7 +284,7 @@ exit();
 
      
 
-       $empSQL = "SELECT * FROM mulkkayit where siteadi='$siteadi'";
+       $empSQL = "SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND siteadi='$siteadi'";
      
 	$empResult = mysqli_query($conn, $empSQL);	
 	
@@ -369,7 +369,7 @@ exit();
             
 
  $mulknox=$emp['id'];           
-             if ($result2y = $conn -> query("SELECT * FROM yapikayit where yapikayit.mulkid='$mulknox'")) {
+             if ($result2y = $conn -> query("SELECT * FROM yapikayit where  yapikayit.company_id = '{$_SESSION['company_id']}' AND yapikayit.mulkid='$mulknox'")) {
   while ($row2y = $result2y -> fetch_array(MYSQLI_ASSOC)) {
       $blokno=$row2y['blok'];
       $daireno=$row2y['kapino'];
@@ -426,7 +426,7 @@ exit();
 			-->
   <?php
     $j=0;   
-if ($result3y = $conn -> query("SELECT * FROM kiralamakayit where kiralamakayit.isdeleted=1 AND kiralamakayit.mulkno='$mulknox'")) {
+if ($result3y = $conn -> query("SELECT * FROM kiralamakayit where  kiralamakayit.company_id = '{$_SESSION['company_id']}' AND kiralamakayit.isdeleted=1 AND kiralamakayit.mulkno='$mulknox'")) {
   while ($row3y = $result3y -> fetch_array(MYSQLI_ASSOC)) {
       $j++;
       $check=0;
@@ -492,7 +492,7 @@ if ($result3y = $conn -> query("SELECT * FROM kiralamakayit where kiralamakayit.
       
      $borc=0;
      
-    if ($result4y = $conn -> query("SELECT * FROM kiratahakkukborc where kiratahakkukborc.kiralamakey='$kiralamakey'")) {
+    if ($result4y = $conn -> query("SELECT * FROM kiratahakkukborc where  kiratahakkukborc.company_id = '{$_SESSION['company_id']}' AND kiratahakkukborc.kiralamakey='$kiralamakey'")) {
   while ($row4y = $result4y -> fetch_array(MYSQLI_ASSOC)) {
 $kiraparabirimi=$row4y['parabirimi'];
       if($row4y['parabirimi']=="STERLIN")
@@ -526,7 +526,7 @@ $kiraparabirimi=$row4y['parabirimi'];
       
       $aidatborc=0;
       
-          if ($result5y = $conn -> query("SELECT * FROM aidattahakkukborc where aidattahakkukborc.kiralamakey='$kiralamakey'")) {
+          if ($result5y = $conn -> query("SELECT * FROM aidattahakkukborc where  aidattahakkukborc.company_id = '{$_SESSION['company_id']}' AND aidattahakkukborc.kiralamakey='$kiralamakey'")) {
   while ($row5y = $result5y -> fetch_array(MYSQLI_ASSOC)) {
 $aidatparabirimi=$row5y['parabirimi'];
       if($row5y['parabirimi']=="STERLIN")
@@ -568,7 +568,7 @@ $aidatparabirimi=$row5y['parabirimi'];
       
            $alacak=0;
      
-    if ($result6y = $conn -> query("SELECT * FROM kiratahakkukgelir where kiratahakkukgelir.kiralamakey='$kiralamakey'")) {
+    if ($result6y = $conn -> query("SELECT * FROM kiratahakkukgelir where  kiratahakkukgelir.company_id = '{$_SESSION['company_id']}' AND kiratahakkukgelir.kiralamakey='$kiralamakey'")) {
   while ($row6y = $result6y -> fetch_array(MYSQLI_ASSOC)) {
 
           $alacak+=$row6y['stgmiktar'];
@@ -580,7 +580,7 @@ $aidatparabirimi=$row5y['parabirimi'];
       
                  $aidatalacak=0;
      
-    if ($result7y = $conn -> query("SELECT * FROM aidattahakkukgelir where aidattahakkukgelir.kiralamakey='$kiralamakey'")) {
+    if ($result7y = $conn -> query("SELECT * FROM aidattahakkukgelir where  aidattahakkukgelir.company_id = '{$_SESSION['company_id']}' AND aidattahakkukgelir.kiralamakey='$kiralamakey'")) {
   while ($row7y = $result7y -> fetch_array(MYSQLI_ASSOC)) {
 
           $aidatalacak+=$row7y['stgmiktar'];

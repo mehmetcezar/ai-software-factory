@@ -609,7 +609,7 @@ if (!$conn) {
     $kiraison=0;
     $kiralandiison=0;
     $kirakaporaeklendi=0;
-     if ($result = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkno'")) {
+     if ($result = $conn -> query("SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkno'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
   
@@ -654,7 +654,7 @@ if (!$conn) {
     
     // kiralandı veya kira kaporası eklendi ise; satış kaporası alınabilir ve satışı yapılabilir.
   
-         if ($result = $conn -> query("SELECT * FROM yapikayit where yapikayit.isdeleted !=1 AND yapikayit.mulkid='$mulkno'")) {
+         if ($result = $conn -> query("SELECT * FROM yapikayit where  yapikayit.company_id = '{$_SESSION['company_id']}' AND yapikayit.isdeleted !=1 AND yapikayit.mulkid='$mulkno'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
      $bolge=$row['ilce'];
@@ -673,7 +673,7 @@ if (!$conn) {
     
     
     if($kirakaporaeklendi==1){
-             if ($result = $conn -> query("SELECT * FROM kirakaporakayit where kirakaporakayit.isdeleted !=1 AND kirakaporakayit.kirakey='$kirakaporasonkey'")) {
+             if ($result = $conn -> query("SELECT * FROM kirakaporakayit where  kirakaporakayit.company_id = '{$_SESSION['company_id']}' AND kirakaporakayit.isdeleted !=1 AND kirakaporakayit.kirakey='$kirakaporasonkey'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
      $adsoyadkiraci=$row['adsoyad'];
@@ -976,7 +976,7 @@ for( $i=0 ; $i < $total_count ; $i++ ) {
          $sql = "INSERT INTO satiskaporakayit (id, date, username, adsoyad, iletisim1, iletisim2, kimlikno, kimliktipi, email, uyruk, kapozelnot, mulkno, kaporamiktari, kaporaparabirimi, kaporateslimtarihi, kaporasatisbelge) VALUES ('', '$date','$uname','$adsoyad','$iletisim1','$iletisim2','$kimlikno','$kimliktipi','$email','$uyruk','$kapozelnot','$mulkno','$kaporamiktari','$kaporaparabirimi','$kaporateslimtarihi','$kaporabelgepaths')"; 
     }
     else{
-     $sql = "INSERT INTO kirakaporakayit (id, date, username, adsoyad, iletisim1, iletisim2, kimlikno, kimliktipi, email, uyruk, kapozelnot, mulkno, kaporamiktari, kaporaparabirimi, kaporateslimtarihi, kaporakirabelge) VALUES ('', '$date','$uname','$adsoyad','$iletisim1','$iletisim2','$kimlikno','$kimliktipi','$email','$uyruk','$kapozelnot','$mulkno','$kaporamiktari','$kaporaparabirimi','$kaporateslimtarihi','$kaporabelgepaths')"; 
+     $sql = "INSERT INTO kirakaporakayit (id, date, username, adsoyad, iletisim1, iletisim2, kimlikno, kimliktipi, email, uyruk, kapozelnot, mulkno, kaporamiktari, kaporaparabirimi, kaporateslimtarihi, kaporakirabelge, company_id) VALUES ('', '$date','$uname','$adsoyad','$iletisim1','$iletisim2','$kimlikno','$kimliktipi','$email','$uyruk','$kapozelnot','$mulkno','$kaporamiktari','$kaporaparabirimi','$kaporateslimtarihi','$kaporabelgepaths', '{$_SESSION['company_id']}')"; 
     }
     
    */ 
@@ -1036,7 +1036,7 @@ $kiralamabitistarihi = $datetime->format('Y-m-d');
         WHERE kiralamakey = '$kirakaporasonkey'";
     */
     /*
-    $sql = "INSERT INTO kiralamakayit (id, date, username, kiralamakey, kiralamatarihi, kiralamabitistarihi, yapino, mulkno, stopajvergisi, kirabedeli, kirabedeliparabirimi, kirasuresi, kiraodemebicimi, aidatodemebicimi, toplamkirabedeli, kaporaid, taksitmiktari, depozitobedeli, depozitobedeliparabirimi, odenendepozito, komisyon, komisyonbedeli, komisyonbedeliparabirimi, komisyontahsili, aidat, aidatbedeli, aidatbedeliparabirimi,aidatsontarih, yonetimsoziste,yonetimsozbastarih,yonetimsozbittarih, kiralamaozelnot, yetkilionay, muhasebeonay,kaporatahMiktar, kaporaPB, kaporaTlRate, kaporaToTlRate, kaporaSterling, depozitoMiktar, depozitoPB, depozitoTlRate, depozitoToTlRate, depozitoSterling, aidatMiktar, aidatPB, aidatTlRate, aidatToTlRate, aidatSterling, kiraMiktar, kiraPB, kiraTlRate, kiraToTlRate, kiraSterling, status) VALUES ('', '$date','$uname','$kiralamakey', '$kiralamatarihi', '$kiralamabitistarihi','$yapino','$mulkno','$stopajvergisi','$kirabedeli','$kirabedeliparabirimi','$kirasuresi','$kiraodemebicimi','$aidatodemebicimi','$toplamkirabedeli','$kaporaid','$taksitmiktari','$depozitobedeli','$depozitobedeliparabirimi','$odenendepozito','$komisyon','$komisyonbedeli','$komisyonbedeliparabirimi','$komisyontahsili', '$aidat','$aidatbedeli','$aidatbedeliparabirimi','$aidatsontarih','$yonetimsoziste','$yonetimsozbastarih','$yonetimsozbittarih','$kiralamaozelnot','$yetkilionay', '$muhasebeonay', '$kaporatahMiktar', '$kaporaPB', '$kaporaTlRate', '$kaporaToTlRate', '$kaporaSterling', '$depozitoMiktar', '$depozitoPB', '$depozitoTlRate', '$depozitoToTlRate', '$depozitoSterling', '$aidatMiktar', '$aidatPB', '$aidatTlRate', '$aidatToTlRate', '$aidatSterling', '$kiraMiktar', '$kiraPB', '$kiraTlRate', '$kiraToTlRate', '$kiraSterling','$status')";
+    $sql = "INSERT INTO kiralamakayit (id, date, username, kiralamakey, kiralamatarihi, kiralamabitistarihi, yapino, mulkno, stopajvergisi, kirabedeli, kirabedeliparabirimi, kirasuresi, kiraodemebicimi, aidatodemebicimi, toplamkirabedeli, kaporaid, taksitmiktari, depozitobedeli, depozitobedeliparabirimi, odenendepozito, komisyon, komisyonbedeli, komisyonbedeliparabirimi, komisyontahsili, aidat, aidatbedeli, aidatbedeliparabirimi,aidatsontarih, yonetimsoziste,yonetimsozbastarih,yonetimsozbittarih, kiralamaozelnot, yetkilionay, muhasebeonay,kaporatahMiktar, kaporaPB, kaporaTlRate, kaporaToTlRate, kaporaSterling, depozitoMiktar, depozitoPB, depozitoTlRate, depozitoToTlRate, depozitoSterling, aidatMiktar, aidatPB, aidatTlRate, aidatToTlRate, aidatSterling, kiraMiktar, kiraPB, kiraTlRate, kiraToTlRate, kiraSterling, status, company_id) VALUES ('', '$date','$uname','$kiralamakey', '$kiralamatarihi', '$kiralamabitistarihi','$yapino','$mulkno','$stopajvergisi','$kirabedeli','$kirabedeliparabirimi','$kirasuresi','$kiraodemebicimi','$aidatodemebicimi','$toplamkirabedeli','$kaporaid','$taksitmiktari','$depozitobedeli','$depozitobedeliparabirimi','$odenendepozito','$komisyon','$komisyonbedeli','$komisyonbedeliparabirimi','$komisyontahsili', '$aidat','$aidatbedeli','$aidatbedeliparabirimi','$aidatsontarih','$yonetimsoziste','$yonetimsozbastarih','$yonetimsozbittarih','$kiralamaozelnot','$yetkilionay', '$muhasebeonay', '$kaporatahMiktar', '$kaporaPB', '$kaporaTlRate', '$kaporaToTlRate', '$kaporaSterling', '$depozitoMiktar', '$depozitoPB', '$depozitoTlRate', '$depozitoToTlRate', '$depozitoSterling', '$aidatMiktar', '$aidatPB', '$aidatTlRate', '$aidatToTlRate', '$aidatSterling', '$kiraMiktar', '$kiraPB', '$kiraTlRate', '$kiraToTlRate', '$kiraSterling','$status', '{$_SESSION['company_id']}')";
     */
     /*$sql = "UPDATE kiralamakayit 
         SET 

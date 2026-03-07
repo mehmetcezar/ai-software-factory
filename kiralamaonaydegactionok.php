@@ -229,7 +229,7 @@ if (!$conn) {
     $kiraison=0;
     $kiralandiison=0;
     $kirakaporaeklendi=0;
-     if ($result = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkno'")) {
+     if ($result = $conn -> query("SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkno'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
       
@@ -259,7 +259,7 @@ if (!$conn) {
     
     
     
-       if ($result = $conn -> query("SELECT * FROM kirakaporakayit where kirakaporakayit.isdeleted !=1 AND kirakaporakayit.kirakey='$kirakaporasonkey'")) {
+       if ($result = $conn -> query("SELECT * FROM kirakaporakayit where  kirakaporakayit.company_id = '{$_SESSION['company_id']}' AND kirakaporakayit.isdeleted !=1 AND kirakaporakayit.kirakey='$kirakaporasonkey'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
       
@@ -272,7 +272,7 @@ if (!$conn) {
     
     
     
-          if ($result = $conn -> query("SELECT * FROM kiralamakayit where kiralamakayit.isdeleted !=1 AND kiralamakayit.kiralamakey='$kirakaporasonkey'")) {
+          if ($result = $conn -> query("SELECT * FROM kiralamakayit where  kiralamakayit.company_id = '{$_SESSION['company_id']}' AND kiralamakayit.isdeleted !=1 AND kiralamakayit.kiralamakey='$kirakaporasonkey'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
       $kiralamayapanuname=$row['username'];
@@ -608,7 +608,7 @@ $kiraodemetarihleri=getKiraOdemeTarihler($kiralamatarihi,$kirasuresi,$kiraodemeb
     $borctipi="KİRA";
     
     for($i=0;$i<count($kiraodemetarihleri);$i++){
-        $sql="INSERT INTO genelborc (id, eklenmetarihi, tahedilecektarih, borctipi, miktar, parabirimi, mulkno, yapino, kiralamakey, kimborclandirildi, esasborctablosunayazildi) VALUES ('', '$date','$kiraodemetarihleri[$i]','$borctipi','$kirabedeli','$kirabedeliparabirimi','$mulkno','$yapino','$kirakaporasonkey','$kimborclandirildi','$esasborctablosunayazildi')";
+        $sql="INSERT INTO genelborc (id, eklenmetarihi, tahedilecektarih, borctipi, miktar, parabirimi, mulkno, yapino, kiralamakey, kimborclandirildi, esasborctablosunayazildi, company_id) VALUES ('', '$date','$kiraodemetarihleri[$i]','$borctipi','$kirabedeli','$kirabedeliparabirimi','$mulkno','$yapino','$kirakaporasonkey','$kimborclandirildi','$esasborctablosunayazildi', '{$_SESSION['company_id']}')";
         if ($conn->query($sql) === TRUE) {}
         else
         {
@@ -628,7 +628,7 @@ $kiraodemetarihleri=getKiraOdemeTarihler($kiralamatarihi,$kirasuresi,$kiraodemeb
     
     $borctipi="AİDAT";
     if($buayaidat=="EVET" && $aidat="VAR"){
-      $sql="INSERT INTO genelborc (id, eklenmetarihi, tahedilecektarih, borctipi, miktar, parabirimi, mulkno, yapino, kiralamakey, kimborclandirildi, esasborctablosunayazildi) VALUES ('', '$date','$kiralamatarihi','$borctipi','$aidatbedeli','$aidatbedeliparabirimi','$mulkno','$yapino','$kirakaporasonkey','$kimborclandirildi','$esasborctablosunayazildi')";
+      $sql="INSERT INTO genelborc (id, eklenmetarihi, tahedilecektarih, borctipi, miktar, parabirimi, mulkno, yapino, kiralamakey, kimborclandirildi, esasborctablosunayazildi, company_id) VALUES ('', '$date','$kiralamatarihi','$borctipi','$aidatbedeli','$aidatbedeliparabirimi','$mulkno','$yapino','$kirakaporasonkey','$kimborclandirildi','$esasborctablosunayazildi', '{$_SESSION['company_id']}')";
         if ($conn->query($sql) === TRUE) {}
         else
         {
@@ -648,7 +648,7 @@ $aidatodemetarihleri=getAidatOdemeTarihler($kiralamatarihi,$kirasuresi);
     $borctipi="AİDAT";
     
     for($i=0;$i<count($aidatodemetarihleri);$i++){
-        $sql="INSERT INTO genelborc (id, eklenmetarihi, tahedilecektarih, borctipi, miktar, parabirimi, mulkno, yapino, kiralamakey, kimborclandirildi, esasborctablosunayazildi) VALUES ('', '$date','$aidatodemetarihleri[$i]','$borctipi','$aidatbedeli','$aidatbedeliparabirimi','$mulkno','$yapino','$kirakaporasonkey','$kimborclandirildi','$esasborctablosunayazildi')";
+        $sql="INSERT INTO genelborc (id, eklenmetarihi, tahedilecektarih, borctipi, miktar, parabirimi, mulkno, yapino, kiralamakey, kimborclandirildi, esasborctablosunayazildi, company_id) VALUES ('', '$date','$aidatodemetarihleri[$i]','$borctipi','$aidatbedeli','$aidatbedeliparabirimi','$mulkno','$yapino','$kirakaporasonkey','$kimborclandirildi','$esasborctablosunayazildi', '{$_SESSION['company_id']}')";
         if ($conn->query($sql) === TRUE) {}
         else
         {
@@ -666,7 +666,7 @@ $aidatodemetarihleri=getAidatOdemeTarihler($kiralamatarihi,$kirasuresi);
     
     $borctipi="DEPOZİTO";
     if($kaporamiktari<$depozitobedeli && $odenendepozito!=0){
-      $sql="INSERT INTO genelborc (id, eklenmetarihi, tahedilecektarih, borctipi, miktar, parabirimi, mulkno, yapino, kiralamakey, kimborclandirildi, esasborctablosunayazildi) VALUES ('', '$date','$kiralamatarihi','$borctipi','$odenendepozito','$depozitobedeliparabirimi','$mulkno','$yapino','$kirakaporasonkey','$kimborclandirildi','$esasborctablosunayazildi')";
+      $sql="INSERT INTO genelborc (id, eklenmetarihi, tahedilecektarih, borctipi, miktar, parabirimi, mulkno, yapino, kiralamakey, kimborclandirildi, esasborctablosunayazildi, company_id) VALUES ('', '$date','$kiralamatarihi','$borctipi','$odenendepozito','$depozitobedeliparabirimi','$mulkno','$yapino','$kirakaporasonkey','$kimborclandirildi','$esasborctablosunayazildi', '{$_SESSION['company_id']}')";
         if ($conn->query($sql) === TRUE) {}
         else
         {
@@ -686,7 +686,7 @@ $aidatodemetarihleri=getAidatOdemeTarihler($kiralamatarihi,$kirasuresi);
     
     $borctipi="KAPORA";
     if($kaporamiktari!=0){
-      $sql="INSERT INTO genelborc (id, eklenmetarihi, tahedilecektarih, borctipi, miktar, parabirimi, mulkno, yapino, kiralamakey, kimborclandirildi, esasborctablosunayazildi) VALUES ('', '$date','$kiralamatarihi','$borctipi','$kaporamiktari','$kaporaparabirimi','$mulkno','$yapino','$kirakaporasonkey','$kimborclandirildi','$esasborctablosunayazildi')";
+      $sql="INSERT INTO genelborc (id, eklenmetarihi, tahedilecektarih, borctipi, miktar, parabirimi, mulkno, yapino, kiralamakey, kimborclandirildi, esasborctablosunayazildi, company_id) VALUES ('', '$date','$kiralamatarihi','$borctipi','$kaporamiktari','$kaporaparabirimi','$mulkno','$yapino','$kirakaporasonkey','$kimborclandirildi','$esasborctablosunayazildi', '{$_SESSION['company_id']}')";
         if ($conn->query($sql) === TRUE) {}
         else
         {
@@ -708,7 +708,7 @@ $suodemetarihleri=getHizmetOdemeTarihler($kiralamatarihi,$kirasuresi,$suodemebic
     $borctipi="SU";
     
     for($i=0;$i<count($suodemetarihleri);$i++){
-        $sql="INSERT INTO genelborc (id, eklenmetarihi, tahedilecektarih, borctipi, miktar, parabirimi, mulkno, yapino, kiralamakey, kimborclandirildi, esasborctablosunayazildi) VALUES ('', '$date','$suodemetarihleri[$i]','$borctipi','$subedeli','$subedeliparabirimi','$mulkno','$yapino','$kirakaporasonkey','$kimborclandirildi','$esasborctablosunayazildi')";
+        $sql="INSERT INTO genelborc (id, eklenmetarihi, tahedilecektarih, borctipi, miktar, parabirimi, mulkno, yapino, kiralamakey, kimborclandirildi, esasborctablosunayazildi, company_id) VALUES ('', '$date','$suodemetarihleri[$i]','$borctipi','$subedeli','$subedeliparabirimi','$mulkno','$yapino','$kirakaporasonkey','$kimborclandirildi','$esasborctablosunayazildi', '{$_SESSION['company_id']}')";
         if ($conn->query($sql) === TRUE) {}
         else
         {
@@ -729,7 +729,7 @@ $hizmetodemetarihleri=getHizmetOdemeTarihler($kiralamatarihi,$kirasuresi,$hizmet
     $borctipi="HİZMET";
     
     for($i=0;$i<count($hizmetodemetarihleri);$i++){
-        $sql="INSERT INTO genelborc (id, eklenmetarihi, tahedilecektarih, borctipi, miktar, parabirimi, mulkno, yapino, kiralamakey, kimborclandirildi, esasborctablosunayazildi) VALUES ('', '$date','$hizmetodemetarihleri[$i]','$borctipi','$hizmetbedeli','$hizmetbedeliparabirimi','$mulkno','$yapino','$kirakaporasonkey','$kimborclandirildi','$esasborctablosunayazildi')";
+        $sql="INSERT INTO genelborc (id, eklenmetarihi, tahedilecektarih, borctipi, miktar, parabirimi, mulkno, yapino, kiralamakey, kimborclandirildi, esasborctablosunayazildi, company_id) VALUES ('', '$date','$hizmetodemetarihleri[$i]','$borctipi','$hizmetbedeli','$hizmetbedeliparabirimi','$mulkno','$yapino','$kirakaporasonkey','$kimborclandirildi','$esasborctablosunayazildi', '{$_SESSION['company_id']}')";
         if ($conn->query($sql) === TRUE) {}
         else
         {
@@ -749,7 +749,7 @@ $internetodemetarihleri=getHizmetOdemeTarihler($kiralamatarihi,$kirasuresi,$inte
     $borctipi="İNTERNET";
     
     for($i=0;$i<count($internetodemetarihleri);$i++){
-        $sql="INSERT INTO genelborc (id, eklenmetarihi, tahedilecektarih, borctipi, miktar, parabirimi, mulkno, yapino, kiralamakey, kimborclandirildi, esasborctablosunayazildi) VALUES ('', '$date','$internetodemetarihleri[$i]','$borctipi','$internetbedeli','$internetbedeliparabirimi','$mulkno','$yapino','$kirakaporasonkey','$kimborclandirildi','$esasborctablosunayazildi')";
+        $sql="INSERT INTO genelborc (id, eklenmetarihi, tahedilecektarih, borctipi, miktar, parabirimi, mulkno, yapino, kiralamakey, kimborclandirildi, esasborctablosunayazildi, company_id) VALUES ('', '$date','$internetodemetarihleri[$i]','$borctipi','$internetbedeli','$internetbedeliparabirimi','$mulkno','$yapino','$kirakaporasonkey','$kimborclandirildi','$esasborctablosunayazildi', '{$_SESSION['company_id']}')";
         if ($conn->query($sql) === TRUE) {}
         else
         {
@@ -765,7 +765,7 @@ $internetodemetarihleri=getHizmetOdemeTarihler($kiralamatarihi,$kirasuresi,$inte
     
     $borctipi="KOMİSYON";
     if($komisyonbedeli!=0){
-      $sql="INSERT INTO genelborc (id, eklenmetarihi, tahedilecektarih, borctipi, miktar, parabirimi, mulkno, yapino, kiralamakey, kimborclandirildi, esasborctablosunayazildi) VALUES ('', '$date','$kiralamatarihi','$borctipi','$komisyonbedeli','$komisyonbedeliparabirimi','$mulkno','$yapino','$kirakaporasonkey','$kimborclandirildi','$esasborctablosunayazildi')";
+      $sql="INSERT INTO genelborc (id, eklenmetarihi, tahedilecektarih, borctipi, miktar, parabirimi, mulkno, yapino, kiralamakey, kimborclandirildi, esasborctablosunayazildi, company_id) VALUES ('', '$date','$kiralamatarihi','$borctipi','$komisyonbedeli','$komisyonbedeliparabirimi','$mulkno','$yapino','$kirakaporasonkey','$kimborclandirildi','$esasborctablosunayazildi', '{$_SESSION['company_id']}')";
         if ($conn->query($sql) === TRUE) {}
         else
         {
@@ -803,7 +803,7 @@ $internetodemetarihleri=getHizmetOdemeTarihler($kiralamatarihi,$kirasuresi,$inte
           $gelirkaynagi="KIRACI";
       $tahsilatnot="KIRALAMASURECI";
      if($depozitoMiktar!=0 && $depozitoSterling!=0){
-     $sql="INSERT INTO depozittahakkukgelir (id, insertdate, tahtarih, mulkno, yapino, kiralamakey, gelirkaynagi, miktar, stgmiktar, parabirimi, tahsilattlrate, tahsilattotlrate, username,  belgepaths, tahsilatnot) VALUES ('', '$date','$kiralamatarihi','$mulkno','$yapino','$kirakaporasonkey','$gelirkaynagi','$depozitoMiktar','$depozitoSterling','$depozitoPB','$depozitoTlRate','$depozitoToTlRate','$kiralamayapanuname','$depozitobelgepaths','$tahsilatnot')";
+     $sql="INSERT INTO depozittahakkukgelir (id, insertdate, tahtarih, mulkno, yapino, kiralamakey, gelirkaynagi, miktar, stgmiktar, parabirimi, tahsilattlrate, tahsilattotlrate, username,  belgepaths, tahsilatnot, company_id) VALUES ('', '$date','$kiralamatarihi','$mulkno','$yapino','$kirakaporasonkey','$gelirkaynagi','$depozitoMiktar','$depozitoSterling','$depozitoPB','$depozitoTlRate','$depozitoToTlRate','$kiralamayapanuname','$depozitobelgepaths','$tahsilatnot', '{$_SESSION['company_id']}')";
         if ($conn->query($sql) === TRUE) {}
         else
         {
@@ -815,7 +815,7 @@ $internetodemetarihleri=getHizmetOdemeTarihler($kiralamatarihi,$kirasuresi,$inte
               $gelirkaynagi="KIRACI";
       $tahsilatnot="KIRALAMASURECI";
      if($aidatMiktar!=0 && $aidatSterling!=0){
-     $sql="INSERT INTO aidattahakkukgelir (id, insertdate, tahtarih, mulkno, yapino, kiralamakey, gelirkaynagi, miktar, stgmiktar, parabirimi, tahsilattlrate, tahsilattotlrate, username,  belgepaths, tahsilatnot) VALUES ('', '$date','$kiralamatarihi','$mulkno','$yapino','$kirakaporasonkey','$gelirkaynagi','$aidatMiktar','$aidatSterling','$aidatPB','$aidatTlRate','$aidatToTlRate','$kiralamayapanuname','$aidatbelgepaths','$tahsilatnot')";
+     $sql="INSERT INTO aidattahakkukgelir (id, insertdate, tahtarih, mulkno, yapino, kiralamakey, gelirkaynagi, miktar, stgmiktar, parabirimi, tahsilattlrate, tahsilattotlrate, username,  belgepaths, tahsilatnot, company_id) VALUES ('', '$date','$kiralamatarihi','$mulkno','$yapino','$kirakaporasonkey','$gelirkaynagi','$aidatMiktar','$aidatSterling','$aidatPB','$aidatTlRate','$aidatToTlRate','$kiralamayapanuname','$aidatbelgepaths','$tahsilatnot', '{$_SESSION['company_id']}')";
         if ($conn->query($sql) === TRUE) {}
         else
         {
@@ -829,7 +829,7 @@ $internetodemetarihleri=getHizmetOdemeTarihler($kiralamatarihi,$kirasuresi,$inte
                   $gelirkaynagi="KIRACI";
       $tahsilatnot="KIRALAMASURECI";
      if($kiraMiktar!=0 && $kiraSterling!=0){
-     $sql="INSERT INTO kiratahakkukgelir (id, insertdate, tahtarih, mulkno, yapino, kiralamakey, gelirkaynagi, miktar, stgmiktar, parabirimi, tahsilattlrate, tahsilattotlrate, username,  belgepaths, tahsilatnot) VALUES ('', '$date','$kiralamatarihi','$mulkno','$yapino','$kirakaporasonkey','$gelirkaynagi','$kiraMiktar','$kiraSterling','$kiraPB','$kiraTlRate','$kiraToTlRate','$kiralamayapanuname','$kirabelgepaths','$tahsilatnot')";
+     $sql="INSERT INTO kiratahakkukgelir (id, insertdate, tahtarih, mulkno, yapino, kiralamakey, gelirkaynagi, miktar, stgmiktar, parabirimi, tahsilattlrate, tahsilattotlrate, username,  belgepaths, tahsilatnot, company_id) VALUES ('', '$date','$kiralamatarihi','$mulkno','$yapino','$kirakaporasonkey','$gelirkaynagi','$kiraMiktar','$kiraSterling','$kiraPB','$kiraTlRate','$kiraToTlRate','$kiralamayapanuname','$kirabelgepaths','$tahsilatnot', '{$_SESSION['company_id']}')";
         if ($conn->query($sql) === TRUE) {}
         else
         {

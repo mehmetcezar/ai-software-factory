@@ -205,7 +205,7 @@ if($i==1){
     
 
      
-        $sql = "INSERT INTO acente (id, adi, email, phone) VALUES ('', '$kullaniciadi', '$email','$bphone')";
+        $sql = "INSERT INTO acente (id, adi, email, phone, company_id) VALUES ('', '$kullaniciadi', '$email','$bphone', '{$_SESSION['company_id']}')";
   
     
 

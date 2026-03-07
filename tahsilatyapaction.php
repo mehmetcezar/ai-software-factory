@@ -308,7 +308,7 @@ if (!$conn) {
 
 
     $kiralandiison=0;
-     if ($result = $conn -> query("SELECT * FROM mulkkayit where mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkno'")) {
+     if ($result = $conn -> query("SELECT * FROM mulkkayit where  mulkkayit.company_id = '{$_SESSION['company_id']}' AND mulkkayit.isdeleted !=1 AND mulkkayit.id='$mulkno'")) {
   while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
       if($row['kiralandi']==1){
@@ -465,7 +465,7 @@ for ($i = 0; $i < $total_count; $i++) {
      $yetkilionay=1;// 1 olunca yetkili onayına gitti demek, 2 olunca ise yetkili onayladı demek.
 
     
-   $sql = "INSERT INTO tahsilat (id, date, tahtarihi, mulkno, yapino, kiralamakey, tahsilatturu, miktar, stgmiktar, parabirimi, tahsilattlrate, tahsilattotlrate, belgepaths, tahsilatnot, basusername, yetkilionay) VALUES ('', '$date','$tahsilattarihidb','$mulkno', '$yapino','$kaporaid','$tahsilatturudb','$kaporatahMiktardb','$kaporaSterlingdb','$kaporaPBdb','$kaporaTlRatedb','$kaporaToTlRatedb','$kaporabelgepaths','$tahsilatnotdb','$uname','$yetkilionay')";
+   $sql = "INSERT INTO tahsilat (id, date, tahtarihi, mulkno, yapino, kiralamakey, tahsilatturu, miktar, stgmiktar, parabirimi, tahsilattlrate, tahsilattotlrate, belgepaths, tahsilatnot, basusername, yetkilionay, company_id) VALUES ('', '$date','$tahsilattarihidb','$mulkno', '$yapino','$kaporaid','$tahsilatturudb','$kaporatahMiktardb','$kaporaSterlingdb','$kaporaPBdb','$kaporaTlRatedb','$kaporaToTlRatedb','$kaporabelgepaths','$tahsilatnotdb','$uname','$yetkilionay', '{$_SESSION['company_id']}')";
     
 /*
     echo "$tahsilattarihidb";echo "<br>";

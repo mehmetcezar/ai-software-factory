@@ -240,21 +240,21 @@ if($i==1){
     
     if($kultipicreate=="Yetkili"){
         $yetkili=1;
-        $sql = "INSERT INTO users (id, name, surname, uname, password, email, phone, yetkili) VALUES ('', '$isim', '$soyisim', '$kullaniciadi', '$password', '$email', '$bphone', '$yetkili')";
+        $sql = "INSERT INTO users (id, name, surname, uname, password, email, phone, yetkili, company_id) VALUES ('', '$isim', '$soyisim', '$kullaniciadi', '$password', '$email', '$bphone', '$yetkili', '{$_SESSION['company_id']}')";
     }
     if($kultipicreate=="Muhasebe"){
         $muhasebe=1;
-         $sql = "INSERT INTO users (id, name, surname, uname, password, email, phone, muhasebe) VALUES ('', '$isim', '$soyisim', '$kullaniciadi', '$password', '$email', '$bphone', '$muhasebe')";
+         $sql = "INSERT INTO users (id, name, surname, uname, password, email, phone, muhasebe, company_id) VALUES ('', '$isim', '$soyisim', '$kullaniciadi', '$password', '$email', '$bphone', '$muhasebe', '{$_SESSION['company_id']}')";
     }
     
     if($kultipicreate=="Kiralama Sorumlusu"){
         $kiralamasorumlusu=1;
-        $sql = "INSERT INTO users (id, name, surname, uname, password, email, phone, kiralamasorumlusu) VALUES ('', '$isim', '$soyisim', '$kullaniciadi', '$password', '$email','$bphone', '$kiralamasorumlusu')";
+        $sql = "INSERT INTO users (id, name, surname, uname, password, email, phone, kiralamasorumlusu, company_id) VALUES ('', '$isim', '$soyisim', '$kullaniciadi', '$password', '$email','$bphone', '$kiralamasorumlusu', '{$_SESSION['company_id']}')";
     }
    
     if($kultipicreate=="Müşteri"){
         $musteri=1;
-        $sql = "INSERT INTO users (id, name, surname, uname, password, email, phone, musteri) VALUES ('', '$isim', '$soyisim', '$kullaniciadi', '$password', '$email','$bphone', '$musteri')";
+        $sql = "INSERT INTO users (id, name, surname, uname, password, email, phone, musteri, company_id) VALUES ('', '$isim', '$soyisim', '$kullaniciadi', '$password', '$email','$bphone', '$musteri', '{$_SESSION['company_id']}')";
     }
     
 
