@@ -39,7 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("isssssi", $company_id, $first_name, $last_name, $username, $password_hashed, $email, $is_admin);
 
     if ($stmt->execute()) {
-        // Success! Redirect to login
         header("Location: admin.php?reg=success");
     }
     else {
