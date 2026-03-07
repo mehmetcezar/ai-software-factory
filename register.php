@@ -17,42 +17,42 @@
         <form action="registeraction.php" method="POST">
             <div class="form-group">
                 <label>Şirket Adı</label>
-                <input type="text" name="company_name" class="input-field" placeholder="Örn: Noveltech Emlak" required>
+                <input type="text" name="company_name" class="input-field" placeholder="Örn: Noveltech Emlak" maxlength="100" required>
             </div>
 
             <div class="form-group">
                 <label>Adınız</label>
-                <input type="text" name="first_name" class="input-field" placeholder="Ad" required>
+                <input type="text" name="first_name" class="input-field" placeholder="Ad" maxlength="30" required>
             </div>
 
             <div class="form-group">
                 <label>Soyadınız</label>
-                <input type="text" name="last_name" class="input-field" placeholder="Soyad" required>
+                <input type="text" name="last_name" class="input-field" placeholder="Soyad" maxlength="30" required>
             </div>
 
             <div class="form-group">
                 <label>Telefon Numarası</label>
-                <input type="tel" name="phone" class="input-field" placeholder="5XXXXXXXXX" pattern="5[0-9]{9}" title="Format: 5XXXXXXXXX (10 hane)" required>
+                <input type="tel" name="phone" class="input-field" placeholder="5XXXXXXXXX" pattern="5[0-9]{9}" title="Format: 5XXXXXXXXX (10 hane)" maxlength="15" required>
             </div>
 
             <div class="form-group">
                 <label>Kullanıcı Adı</label>
-                <input type="text" name="username" class="input-field" placeholder="Giriş için kullanıcı adınız" required>
+                <input type="text" name="username" class="input-field" placeholder="Giriş için kullanıcı adınız" maxlength="20" required>
             </div>
 
             <div class="form-group">
                 <label>E-posta Adresi</label>
-                <input type="email" name="email" class="input-field" placeholder="iletisim@sirketiniz.com" required>
+                <input type="email" name="email" class="input-field" placeholder="iletisim@sirketiniz.com" maxlength="30" required>
             </div>
 
             <div class="form-group">
                 <label>Şifre</label>
-                <input type="password" name="password" class="input-field" placeholder="••••••••" required>
+                <input type="password" name="password" class="input-field" placeholder="••••••••" maxlength="32" required>
             </div>
 
             <div class="form-group">
                 <label>Şifre Tekrar</label>
-                <input type="password" name="password_confirm" class="input-field" placeholder="••••••••" required>
+                <input type="password" name="password_confirm" class="input-field" placeholder="••••••••" maxlength="32" required>
             </div>
 
             <button type="submit" class="reg-button">Hesabı Oluştur</button>
