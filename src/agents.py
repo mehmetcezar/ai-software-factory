@@ -1,4 +1,5 @@
 from crewai import Agent, LLM
+from tools import read_file, write_file
 
 # Configure the local Ollama LLM
 # Note: You can change "llama3.1" to "phi3" or any other model you have downloaded in Ollama.
@@ -25,9 +26,10 @@ class FactoryAgents:
     def developer_agent(self):
         return Agent(
             role='Senior Developer',
-            goal='Write clean, efficient, and well-documented Python code based on the given tasks.',
-            backstory='You are a brilliant Senior Software Engineer. You excel at functional programming, object-oriented design, and writing production-ready code with no bugs.',
+            goal='Write clean, efficient, and well-documented Python code based on the given tasks, and save them to files.',
+            backstory='You are a brilliant Senior Software Engineer. You excel at functional programming, object-oriented design, and writing production-ready code with no bugs. You must always write the code to disk using the write_file tool.',
             llm=local_llm,
+            tools=[read_file, write_file],
             verbose=True,
             allow_delegation=False
         )
@@ -35,9 +37,10 @@ class FactoryAgents:
     def qa_agent(self):
         return Agent(
             role='Quality Assurance Specialist',
-            goal='Review code, write unit tests, and ensure all requirements are met before deployment.',
-            backstory='You are a strict and detail-oriented QA engineer. You catch every bug before it goes to production. You write thorough tests and demand high code quality.',
+            goal='Review code, write unit tests, save the tests to files, and ensure all requirements are met before deployment.',
+            backstory='You are a strict and detail-oriented QA engineer. You catch every bug before it goes to production. You write thorough tests and demand high code quality. You must write your test files to disk using the write_file tool.',
             llm=local_llm,
+            tools=[read_file, write_file],
             verbose=True,
             allow_delegation=False
         )
