@@ -1,5 +1,4 @@
-﻿<?php include_once('usersession.php'); ?>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -85,7 +84,7 @@ function goBack() {
     //echo "sucess";
 
     
-    include 'usersession.php';
+include_once 'usersession.php';
             //echo "OKpre";
     //usersessiontimecheck();
             
