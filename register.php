@@ -6,6 +6,35 @@
     <title>Noveltech - Kurumsal Kayıt</title>
     <link rel="stylesheet" href="register.css?rnd=<?php echo rand()?>">
     <link rel="shortcut icon" type="image/x-icon" href="image/logo/noveltechlogo.jpeg" />
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filters = {
+                'username': /[^a-zA-Z0-9._]/g,
+                'first_name': /[^a-zA-ZğüşıöçĞÜŞİÖÇ .]/g,
+                'last_name': /[^a-zA-ZğüşıöçĞÜŞİÖÇ .]/g,
+                'company_name': /[^a-zA-ZğüşıöçĞÜŞİÖÇ0-9 &.\-\/,]/g,
+                'phone': /[^0-9]/g
+            };
+
+            Object.keys(filters).forEach(fieldName => {
+                const input = document.querySelector(`input[name="${fieldName}"]`);
+                if (input) {
+                    input.addEventListener('input', function(e) {
+                        const start = this.selectionStart;
+                        const end = this.selectionEnd;
+                        const oldValue = this.value;
+                        const newValue = oldValue.replace(filters[fieldName], '');
+                        
+                        if (oldValue !== newValue) {
+                            this.value = newValue;
+                            // Restore cursor position
+                            this.setSelectionRange(start - (oldValue.length - newValue.length), end - (oldValue.length - newValue.length));
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="reg-container">
