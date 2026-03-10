@@ -1,4 +1,4 @@
-﻿    <?php
+﻿<?php
 date_default_timezone_set('Europe/Nicosia');
 	function usersessionwrite($uname,$sessionx,$timesession,$datesession){
 		include 'config.php';

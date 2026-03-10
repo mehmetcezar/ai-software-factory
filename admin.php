@@ -1,3 +1,4 @@
+﻿<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
         <title>https://whitelotustest.online/</title>
-        <meta name="ktmmo" content="kira satış danışman emlak alım">
+        <meta name="ktmmo" content="kira satÄ±ÅŸ danÄ±ÅŸman emlak alÄ±m">
         <link rel="stylesheet" type="text/css" href="main.css?rnd=<?php echo rand()?>">
         <link rel="stylesheet" type="text/css" href="admin_new.css?rnd=<?php echo rand()?>">
         <link rel="shortcut icon" type="image/x-icon" href="logo/logo.jpeg" /> 
@@ -28,12 +29,12 @@
 
         <form action="loginactionpage.php" method="post" class="loginform" id="loginform" onsubmit="return validateloginpage()">
           <div class="container">
-            <label for="uname"><b>Kullanıcı Adı</b></label>
-            <input type="text" placeholder="Kullanıcı adınızı girin" name="uname" id="uname" class="inputtextst">
+            <label for="uname"><b>KullanÄ±cÄ± AdÄ±</b></label>
+            <input type="text" placeholder="KullanÄ±cÄ± adÄ±nÄ±zÄ± girin" name="uname" id="uname" class="inputtextst">
 
-            <label for="psw"><b>Şifre</b></label>
+            <label for="psw"><b>Åifre</b></label>
             <div class="password-wrapper">
-                <input type="password" placeholder="Şifrenizi girin" name="psw" id="psw" class="inputtextst">
+                <input type="password" placeholder="Åifrenizi girin" name="psw" id="psw" class="inputtextst">
                 <span id="togglePassword" class="eye-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
@@ -45,7 +46,7 @@
             <div class="g-recaptcha" style="transform: scale(0.85); transform-origin: center center;" data-theme="dark" data-sitekey="6LemsP0pAAAAAHMT75XXrlw69_t_oRNWxlwURsNW"></div>
             <div id="g-recaptcha-error3" style="text-align: center; margin-top: 5px;"></div> 
             
-            <button type="submit" class="buttonsubmitform">Giriş Yap</button>
+            <button type="submit" class="buttonsubmitform">GiriÅŸ Yap</button>
           </div>
         </form>
     </div>
@@ -93,7 +94,7 @@ function validateloginpage(){
     y=y.trim(y);
 
   if (x == "") {
-    alert("Kullanıcı adı doldurulmalıdır.");
+    alert("KullanÄ±cÄ± adÄ± doldurulmalÄ±dÄ±r.");
       document.getElementById("uname").value = '';
       document.getElementById("uname").focus();
     return false;
@@ -107,7 +108,7 @@ function validateloginpage(){
             count++;}  
     }
     
-    if (count){alert("Kullanıcı adı düzgün doldurulmadı.")
+    if (count){alert("KullanÄ±cÄ± adÄ± dÃ¼zgÃ¼n doldurulmadÄ±.")
                document.getElementById("uname").value = '';
                document.getElementById("uname").focus();
             return false;
@@ -115,7 +116,7 @@ function validateloginpage(){
     
     
     if (y == "") {
-    alert("Şifre doldurulmalıdır.");
+    alert("Åifre doldurulmalÄ±dÄ±r.");
     document.getElementById("psw").value = '';
     document.getElementById("psw").focus();
     return false;
@@ -131,7 +132,7 @@ function validateloginpage(){
  
     var response = grecaptcha.getResponse();
     if(response.length == 0) {
-        document.getElementById('g-recaptcha-error3').innerHTML = '<span style="color:red;font-weight:bold;">Bu alan doldurulmalıdır.</span>';
+        document.getElementById('g-recaptcha-error3').innerHTML = '<span style="color:red;font-weight:bold;">Bu alan doldurulmalÄ±dÄ±r.</span>';
         return false;
     }else
     {return true;}
@@ -145,7 +146,7 @@ document.getElementById("loginform").addEventListener("submit", function(evt)
   if(response2.length == 0) 
   { 
     //reCaptcha not verified
-    document.getElementById('g-recaptcha-error3').innerHTML = '<span style="color:red;">Bu alan doldurulmalıdır.</span>';
+    document.getElementById('g-recaptcha-error3').innerHTML = '<span style="color:red;">Bu alan doldurulmalÄ±dÄ±r.</span>';
         return false;
     evt.preventDefault();
     return false;
@@ -176,7 +177,7 @@ return (re.test(String(pass).toLowerCase()));
 <div class="b-footer">
 
 <p>
-Tüm Hakları Saklıdır © NOVELTECH <script>document.write(new Date().getFullYear())</script> </p>
+TÃ¼m HaklarÄ± SaklÄ±dÄ±r Â© NOVELTECH <script>document.write(new Date().getFullYear())</script> </p>
 <p>Designed by Noveltech Solutions Ltd.</p><p><img style="max-height:auto;max-width:80px;" src="image/logo/noveltechlogo.jpeg"></p>
     </div>
     </footer> 
