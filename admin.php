@@ -17,7 +17,7 @@
     
 <body class="loginmainpage">
     <?php
-     include 'usersession.php';
+     // include 'usersession.php';
             //echo "OKpre";
     //usersessiontimecheck();
     ?>
