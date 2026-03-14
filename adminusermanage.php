@@ -120,6 +120,11 @@ exit();
             // Join companies table to get the company name
             $empSQL = "SELECT users.*, companies.company_name FROM users LEFT JOIN companies ON users.company_id = companies.id WHERE users.company_id = '{$_SESSION['company_id']}' AND users.isdeleted!=1";  
             $empResult = mysqli_query($conn, $empSQL);	
+            
+            if (!$empResult) {
+                echo "<div class='alert alert-danger'>Veritabanı hatası: " . mysqli_error($conn) . "</div>";
+                echo "<div class='alert alert-warning'>Lütfen canlı sunucudaki veritabanınıza `company_id` sütununu ve `companies` tablosunu eklediğinizden emin olun.</div>";
+            }
             $kultipimevcut = "";
             ?>
             
